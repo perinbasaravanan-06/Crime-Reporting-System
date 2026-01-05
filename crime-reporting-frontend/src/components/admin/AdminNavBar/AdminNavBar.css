@@ -1,0 +1,29 @@
+.admin-nav {
+  display: flex;
+  gap: 24px;
+  padding: 12px 32px;
+  background: #f1f5f9;
+  border-bottom: 1px solid #cbd5e1;
+  font-family: "Inter", sans-serif;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.admin-link {
+  text-decoration: none;
+  color: #0b2545;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.admin-link:hover {
+  background-color: #e2e8f0;
+}
+
+.admin-link.active {
+  background-color: #2563eb;
+  color: white;
+}

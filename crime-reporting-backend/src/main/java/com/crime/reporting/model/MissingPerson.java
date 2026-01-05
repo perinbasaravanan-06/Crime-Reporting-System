@@ -1,3 +1,4 @@
+
 package com.crime.reporting.model;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,9 @@ public class MissingPerson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long missingId;
 
+    @Column(nullable = false, unique = true)
+    private String caseId;
+    
     @Column(nullable = false)
     private String name;
 
@@ -40,6 +44,8 @@ public class MissingPerson {
     private String city;
     private String state;
     private String pincode;
+    @Column(name = "photo_url")
+    private String photoUrl;
 
     private LocalDateTime lastSeenDate;
 

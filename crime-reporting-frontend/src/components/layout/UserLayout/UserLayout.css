@@ -1,0 +1,6 @@
+.layout-container {
+  min-height: calc(100vh - 72px);
+  /* navbar height */
+  padding: 24px;
+  background-color: var(--bg-primary);
+}

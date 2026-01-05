@@ -1,0 +1,116 @@
+.report-missing-page {
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+  background: #f8fafc;
+  min-height: calc(100vh - 120px);
+  font-family: "Inter", sans-serif;
+}
+
+.report-missing-card {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.report-missing-card h2 {
+  color: #0b2545;
+  margin-bottom: 8px;
+}
+
+.report-missing-card .info {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.report-missing-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.report-missing-card input,
+.report-missing-card select,
+.report-missing-card textarea {
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.report-missing-card textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.report-missing-card input:focus,
+.report-missing-card select:focus,
+.report-missing-card textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.row > * {
+  flex: 1;
+}
+
+.row.secondary{
+  width: 30px;
+}
+/* BUTTON */
+.report-missing-card button {
+  margin-top: 12px;
+  padding: 14px;
+  background: #0b2545;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.report-missing-card button:hover {
+  opacity: 0.9;
+}
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image-upload label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.image-upload input {
+  padding: 6px;
+}
+
+.image-preview {
+  margin-top: 10px;
+  width: 140px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+}

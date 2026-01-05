@@ -1,0 +1,86 @@
+.police-myreports {
+  padding: 28px 36px;
+  background: #f8fafc;
+  min-height: calc(100vh - 124px);
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.page-header h2 {
+  color: #0b2545;
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 28px;
+}
+
+/* TABLE CARD */
+.table-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+}
+
+.table-card h3 {
+  color: #0b2545;
+  margin-bottom: 14px;
+}
+
+/* TABLE */
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-card th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.table-card td {
+  padding: 14px 12px;
+  font-size: 14px;
+  color: #0b2545;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.active {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.status.underinvestigation {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.status.closed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}

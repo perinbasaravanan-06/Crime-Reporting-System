@@ -1,0 +1,97 @@
+.police-total {
+  padding: 28px 36px;
+  font-family: "Inter", sans-serif;
+}
+
+.police-total h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* TABLE */
+.police-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.police-table th,
+.police-table td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.police-table thead {
+  background: #f1f5f9;
+}
+
+.police-table th {
+  color: #334155;
+  font-weight: 600;
+}
+
+police-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.police-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* CELL */
+.actions {
+  text-align: center;
+}
+
+/* BADGE BASE */
+.status-badge {
+  display: inline-block;
+  min-width: 90px;
+  padding: 6px 14px;
+  border-radius: 999px; /* pill shape */
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+
+/* APPROVED */
+.status-badge.approved   {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* REJECTED */
+.status-badge.rejected {
+  background-color: #f5e2fe;
+  color: #7f1d1d;
+  border: 1px solid #fca5a5;
+}
+
+/* PENDING */
+.status-badge.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+
+/* EMPTY STATE */
+.empty {
+  background: #f8fafc;
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+  border-radius: 8px;
+}

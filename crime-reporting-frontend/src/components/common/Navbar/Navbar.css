@@ -1,0 +1,192 @@
+/* ================= NAVBAR CONTAINER ================= */
+.gov-navbar {
+  height: 72px;
+  background: linear-gradient(90deg, #0b2545, #133a63);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 4px solid #cd3314;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+/* ================= LEFT SECTION ================= */
+.gov-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gov-logo {
+  height: 42px;
+  width: auto;
+  cursor: pointer;
+}
+
+.gov-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 12px;
+  cursor: pointer;
+}
+
+/* ================= RIGHT SECTION ================= */
+.gov-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ================= HELPLINE ================= */
+.gov-helpline {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ================= LINKS & BUTTONS ================= */
+.gov-link {
+  background: none;
+  border: 1px solid transparent;
+  /* prevents layout shift */
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border 0.2s ease;
+  box-sizing: border-box;
+}
+
+.gov-link:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ================= USER NAME ================= */
+.gov-user {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ================= LOGOUT ================= */
+.logout-btn {
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+/* ================= ROLE TOGGLE ================= */
+.login-toggle {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 2px;
+  /* small inner gap */
+  background: transparent;
+  height: 32px;
+  /* fixed track height */
+  box-sizing: border-box;
+}
+
+/* BUTTONS */
+.toggle-btn {
+  flex: 1;
+  height: 100%;
+  /* fill track vertically */
+  margin: 0;
+  padding: 0 18px;
+  /* horizontal only */
+  font-size: 13px;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+/* ACTIVE PILL (FULL HEIGHT) */
+.toggle-btn.active {
+  background-color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+}
+
+/* HOVER ONLY WHEN NOT ACTIVE */
+.toggle-btn:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* ================= THEME TOGGLE ================= */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .gov-navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .gov-left {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gov-title {
+    font-size: 18px;
+  }
+}

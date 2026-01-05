@@ -1,0 +1,121 @@
+.police-missing-page {
+  padding: 28px 36px;
+  background: #f8fafc;
+  min-height: calc(100vh - 124px);
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.page-header h2 {
+  color: #0b2545;
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+/* TABLE WRAPPER */
+.missing-table-wrapper {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.missing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.missing-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.missing-table td {
+  padding: 14px 12px;
+  font-size: 14px;
+  color: #0b2545;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* STATUS BADGES */
+.status {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.open {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.status.found {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* ACTION */
+.action-btn {
+  background: #0b2545;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: #133a63;
+}
+
+.done-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* UNDER INVESTIGATION */
+.status.under-investigation {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+/* SUBMITTED */
+.status.submitted {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+/* FOUND */
+.status.found {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* STATUS DROPDOWN */
+.status-select {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #cbd5f5;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: #0b2545;
+}

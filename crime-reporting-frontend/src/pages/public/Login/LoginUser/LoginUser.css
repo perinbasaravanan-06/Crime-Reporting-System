@@ -1,0 +1,138 @@
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+/* CARD */
+/* CARD */
+.login-card {
+  display: flex;
+  width: 850px;
+  /* reduced width */
+  max-width: 95%;
+  height: 70vh;
+  /* reduced height */
+  background: linear-gradient(90deg, #0b2545, #133a63);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  border: 4px solid red;
+  color: #ffffff;
+}
+
+
+/* LEFT IMAGE */
+.login-image {
+  width: 45%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* IMAGE TEXT */
+.login-image-content {
+  bottom: 22px;
+  left: 22px;
+  right: 22px;
+}
+
+.login-image-content h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.login-image-content p {
+  font-size: 15px;
+  opacity: 0.95;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* RIGHT FORM */
+.login-form {
+  width: 55%;
+  padding: 28px 32px;
+  /* tighter */
+  background-color: var(--bg-secondary);
+}
+
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form input {
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.login-form button {
+  margin-top: 10px;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background: #1d4ed8;
+}
+
+.switch {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .login-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+}

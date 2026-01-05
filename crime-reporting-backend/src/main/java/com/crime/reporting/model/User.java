@@ -35,6 +35,7 @@ public class User {
     private String pincode;
     private LocalDateTime createAt;
     
+    
     @PrePersist
     protected void onCreate() {
     	this.createAt = LocalDateTime.now();

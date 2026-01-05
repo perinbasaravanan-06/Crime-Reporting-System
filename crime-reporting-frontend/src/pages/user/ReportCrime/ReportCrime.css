@@ -1,0 +1,79 @@
+.report-crime-page {
+  min-height: calc(100vh - 124px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+  font-family: "Inter", sans-serif;
+}
+
+.report-crime-card {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.report-crime-card h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.report-crime-card .info {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input,
+select,
+textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row input,
+.row select {
+  flex: 1;
+}
+
+button {
+  margin-top: 8px;
+  padding: 14px;
+  background: #0b2545;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #133a63;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+}

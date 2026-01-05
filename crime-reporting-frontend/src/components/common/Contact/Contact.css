@@ -1,0 +1,161 @@
+.contact-page {
+  padding: 32px 40px;
+  background: #f8fafc;
+  min-height: calc(100vh - 120px);
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.contact-header {
+  margin-bottom: 28px;
+}
+
+.contact-header h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.contact-header p {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* INFO CARDS */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card h4 {
+  color: #0b2545;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+/* MAIN CONTENT */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* LEFT INFO */
+.contact-info h3 {
+  color: #0b2545;
+  margin-bottom: 12px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #334155;
+}
+
+/* NOTICE */
+.notice-box {
+  margin-top: 20px;
+  background: #fff7ed;
+  border-left: 4px solid #f59e0b;
+  padding: 14px;
+  border-radius: 6px;
+}
+
+.notice-box h4 {
+  color: #92400e;
+  margin-bottom: 6px;
+}
+
+.notice-box p {
+  font-size: 13px;
+  color: #78350f;
+}
+
+/* FORM */
+.contact-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form-card {
+  background: #ffffff;
+  padding: 32px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-card h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.contact-form-card p {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+  outline: none;
+  border-color: #0b2545;
+}
+
+.contact-form-card button {
+  width: 100%;
+  padding: 12px;
+  background: #0b2545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-form-card button:hover {
+  background: #133a63;
+}
+
+/* FOOTER */
+.contact-footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}

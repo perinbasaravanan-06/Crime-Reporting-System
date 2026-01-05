@@ -15,4 +15,9 @@ public interface EvidenceRepository extends JpaRepository<Evidence, Long> {
     List<Evidence> findByCrime(Crime crime);
 
     List<Evidence> findByMissingPerson(MissingPerson missingPerson);
+    public long countByCrime(Crime crime);
+
+    public long countByMissingPerson(MissingPerson missingPerson);
+    
+    public List<Evidence> findByUploadedBy_UserId(Long userId);
 }

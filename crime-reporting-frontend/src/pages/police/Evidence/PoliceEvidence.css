@@ -1,0 +1,128 @@
+.police-evidence-page {
+  padding: 28px 36px;
+  background: #f8fafc;
+  min-height: calc(100vh - 124px);
+ font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.page-header h2 {
+  color: #0b2545;
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+/* TABLE WRAPPER */
+.evidence-table-wrapper {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.evidence-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.evidence-table td {
+  padding: 14px 12px;
+  font-size: 14px;
+  color: #0b2545;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* CASE TYPE */
+.case-type {
+  padding: 5px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.case-type.crime {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.case-type.missing {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.pending {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actions .approve {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.actions .approve:hover {
+  background: #15803d;
+}
+
+.actions .reject {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.actions .reject:hover {
+  background: #b91c1c;
+}
+
+.done-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #16a34a;
+}

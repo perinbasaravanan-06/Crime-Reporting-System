@@ -1,8 +1,11 @@
+// ==================== Package Declaration ==============================
 package com.crime.reporting.service;
 
+// ==================== Import Statements ==============================
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.crime.reporting.model.MissingPerson;
@@ -12,9 +15,11 @@ import com.crime.reporting.repository.MissingPersonRepository;
 import com.crime.reporting.repository.PoliceRepository;
 import com.crime.reporting.repository.UserRepository;
 
+// ==================== Service Class Declaration ==============================
 @Service
 public class MissingPersonService {
 
+    // ==================== Repository Dependencies ==============================
     @Autowired
     private MissingPersonRepository missingPersonRepository;
 
@@ -24,59 +29,95 @@ public class MissingPersonService {
     @Autowired
     private PoliceRepository policeRepository;
 
-    // ================= CREATE =================
-    public MissingPerson createMissingPerson(MissingPerson missingPerson, Long userId) {
+    // ==================== Create Missing Person ==============================
+    public MissingPerson createMissingPerson(MissingPerson missingPerson, String userEmail) {
 
-        //Assign reporting user
-        User user = userRepository.findById(userId)
+        // Assign reporting user
+        User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         missingPerson.setReportedBy(user);
 
-        //Assign Sub Inspector with least missing cases
-        Police assignedSI = findLeastBusySubInspector();
+        Police assignedSI = assignPolice();
         missingPerson.setAssignedPolice(assignedSI);
 
-        //Save
+        long count = missingPersonRepository.count() + 1;
+        missingPerson.setCaseId("MISS-" + String.format("%02d", count));
+
+        // Save
         return missingPersonRepository.save(missingPerson);
     }
 
-    // ================= READ =================
+    // ==================== Read All Missing Persons ==============================
     public List<MissingPerson> getAllMissingPersons() {
         return missingPersonRepository.findAll();
     }
 
-    public MissingPerson getMissingPersonById(Long id) {
-        return missingPersonRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Missing person not found"));
+    // ==================== Get Missing Persons Submitted by User ==============================
+    public List<MissingPerson> getMissingByUser(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return missingPersonRepository.findByReportedBy_UserId(user.getUserId());
     }
+    // ==================== Core Logic to Assign Least Busy Sub Inspector ==============================
+    private Police assignPolice() {
+        List<Police> eligiblePolice = policeRepository.findAll()
+                .stream()
+                .filter(p -> "APPROVED".equals(p.getApprovalStatus()))
+                .toList();
 
-    // ================= CORE LOGIC =================
-    private Police findLeastBusySubInspector() {
-
-        List<Police> policeList = policeRepository.findAll();
+        if (eligiblePolice.isEmpty()) {
+            throw new RuntimeException(
+                    "No APPROVED police found");
+        }
 
         Police selected = null;
-        long minCount = Long.MAX_VALUE;
+        long minCrimeCount = Long.MAX_VALUE;
 
-        for (Police police : policeList) {
+        for (Police police : eligiblePolice) {
 
-            //ONLY SI
-            if (!"SI".equalsIgnoreCase(police.getRank())) {
-                continue;
-            }
+            long crimeCount = missingPersonRepository.countByAssignedPolice(police);
 
-            long count = missingPersonRepository.countByAssignedPolice(police);
-
-            if (count < minCount) {
-                minCount = count;
+            if (selected == null || crimeCount < minCrimeCount) {
+                minCrimeCount = crimeCount;
+                selected = police;
+            } else if (crimeCount == minCrimeCount &&
+                       police.getCreatedAt().isBefore(selected.getCreatedAt())) {
                 selected = police;
             }
         }
 
-        if (selected == null) {
-            throw new RuntimeException("No Sub Inspector available");
+        return selected;
+    }
+
+
+    // ==================== Update Missing Person Status ==============================
+    public MissingPerson updateMissingStatus(
+            @NonNull Long missingId,
+            String status,
+            String policeEmail
+    ) {
+        MissingPerson m = missingPersonRepository.findById(missingId)
+                .orElseThrow(() -> new RuntimeException("Missing case not found"));
+
+        Police police = policeRepository.findByEmail(policeEmail)
+                .orElseThrow(() -> new RuntimeException("Police not found"));
+
+        if (!m.getAssignedPolice().getUserId().equals(police.getUserId())) {
+            throw new RuntimeException("Not authorized for this case");
         }
 
-        return selected;
+        m.setStatus(status);
+        return missingPersonRepository.save(m);
+    }
+
+    // ==================== Get Missing Persons Assigned to Police ==============================
+    public List<MissingPerson> getAssignedMissing(String policeEmail) {
+
+        Police police = policeRepository.findByEmail(policeEmail)
+                .orElseThrow(() -> new RuntimeException("Police not found"));
+
+        return missingPersonRepository
+                .findByAssignedPolice_UserId(police.getUserId());
     }
 }

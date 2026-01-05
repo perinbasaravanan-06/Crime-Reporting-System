@@ -21,6 +21,9 @@ public class Evidence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long evidenceId;
+    
+    @Column(nullable = false, unique = true)
+    private String evidenceCode; // TH-01-EV-01
 
     @Column(nullable = false)
     private String fileName;
@@ -36,6 +39,8 @@ public class Evidence {
     @Column(nullable = false, updatable = false)
     private LocalDateTime uploadedAt;
 
+    @Column(nullable = false)
+    private String status; // PENDING, APPROVED, REJECTED
     // 🔗 Evidence related to Crime (optional)
     @ManyToOne
     @JoinColumn(name = "crime_id")
@@ -45,9 +50,13 @@ public class Evidence {
     @ManyToOne
     @JoinColumn(name = "missing_id")
     private MissingPerson missingPerson;
+    
+    @ManyToOne
+    private User uploadedBy;
 
     @PrePersist
     protected void onCreate() {
         this.uploadedAt = LocalDateTime.now();
+        this.status = "PENDING";
     }
 }

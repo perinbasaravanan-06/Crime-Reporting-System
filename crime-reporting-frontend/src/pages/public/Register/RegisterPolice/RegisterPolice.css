@@ -1,0 +1,182 @@
+.register-page {
+  height: 100vh;
+  width: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+
+  /* 🔒 STOP SCROLL ONLY HERE */
+  overflow: hidden;
+}
+
+
+.register-card {
+  display: flex;
+  width: 1000px;
+  max-width: 95%;
+  height: 85vh;
+  /* stays inside viewport */
+  background: linear-gradient(90deg, #0b2545, #133a63);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  /* prevents inner overflow */
+  border: 4px solid red;
+  color: #ffffff;
+}
+
+
+
+/* LEFT IMAGE PANEL */
+.register-image {
+  width: 45%;
+
+  background-position: center;
+  position: relative;
+  /* needed for text positioning */
+}
+
+
+
+
+
+/* IMAGE TEXT */
+.register-image-content {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  color: #ffffff;
+}
+
+
+.register-image-content h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+.register-image-content p {
+  font-size: 15px;
+  opacity: 0.95;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* RIGHT FORM PANEL */
+.register-form {
+  width: 55%;
+  padding: 32px 36px;
+  /* reduced vertical padding */
+  background-color: var(--bg-secondary);
+}
+
+.register-form h2 {
+  margin-bottom: 14px;
+  /* tighter spacing */
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* FORM */
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* tighter spacing */
+}
+
+.register-form input,
+.register-form select {
+  padding: 11px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* TWO COLUMN ROW */
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.row input {
+  flex: 1;
+}
+
+/* BUTTON */
+.register-form button {
+  margin-top: 10px;
+  padding: 13px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.register-form .note {
+  background-color: #ec0707;
+  justify-content: center;
+  text-align: center;
+  border-radius: 2px;
+  min-height: 20px;
+  min-width: 30px;
+  padding: 5px;
+  color: white;
+}
+
+.register-form button:hover {
+  background: #1d4ed8;
+}
+
+/* LINKS */
+.switch {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+.note {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #b45309;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .register-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .register-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .register-form {
+    width: 100%;
+  }
+}

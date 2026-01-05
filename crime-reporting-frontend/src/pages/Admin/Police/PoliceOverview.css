@@ -1,0 +1,86 @@
+.police-overview {
+  padding: 28px 36px;
+  font-family: "Inter", sans-serif;
+}
+
+.police-overview h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #475569;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+/* STAT GRID */
+.police-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #2563eb;
+}
+
+.stat-card h3 {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0b2545;
+}
+
+/* VARIANTS */
+.stat-card.pending {
+  border-left-color: #f59e0b;
+}
+ .stat-card button {
+  padding: 10px 15px; 
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.stat-card.approved {
+  border-left-color: #16a34a;
+}
+
+.stat-card.rejected {
+  border-left-color: #dc2626;
+}
+
+/* ACTION */
+.police-action {
+  margin-top: 32px;
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+
+.police-action button {
+  padding: 12px 20px; 
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.police-action button:hover {
+  background: #1d4ed8;
+}

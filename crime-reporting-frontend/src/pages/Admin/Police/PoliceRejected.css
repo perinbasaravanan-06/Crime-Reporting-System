@@ -1,0 +1,61 @@
+.police-rejected{
+  padding: 28px 36px;
+  font-family: "Inter", sans-serif;
+}
+
+.police-rejected h2 {
+  color: #0b2545;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* TABLE */
+.rejected-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.rejected-table th,
+.rejected-table td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.rejected-table thead {
+  background: #f1f5f9;
+}
+
+.rejected-table th {
+  color: #334155;
+  font-weight: 600;
+}
+
+.rejected-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rejected-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+
+
+/* EMPTY STATE */
+.empty {
+  background: #f8fafc;
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+  border-radius: 8px;
+}

@@ -1,0 +1,102 @@
+.my-reports {
+  padding: 28px 36px;
+  background: #f8fafc;
+  font-family: "Inter", sans-serif;
+}
+
+.my-reports h2 {
+  color: #0b2545;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+/* SECTION */
+.report-section {
+  margin-bottom: 40px;
+}
+
+.report-section h3 {
+  margin-bottom: 12px;
+  color: #0b2545;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+  background: #0b2545;
+  color: #ffffff;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* STATUS BADGES */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.under-review {
+  background: #fde68a;
+  color: #92400e;
+}
+
+.status.open {
+  background: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.status.closed {
+  background: #bbf7d0;
+  color: #166534;
+}
+.table-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.table-image:hover {
+  transform: scale(1.5);
+  transition: 0.3s;
+}
+.pdf-link {
+  color: #d32f2f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pdf-link:hover {
+  text-decoration: underline;
+}
+
+

@@ -1,9 +1,12 @@
+// ==================== Package Declaration ==============================
 package com.crime.reporting.controller;
 
+// ==================== Import Statements ==============================
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,78 +19,56 @@ import com.crime.reporting.model.Police;
 import com.crime.reporting.model.User;
 import com.crime.reporting.service.AdminService;
 
+// ==================== Controller Class Declaration ==============================
 @RestController
 @RequestMapping("/api/admin")
+
 public class AdminController {
 
+    // ==================== Dependency Injection ==============================
     @Autowired
     private AdminService adminService;
 
-    // ================= DASHBOARD =================
-
-    // Get admin dashboard statistics
+    // ==================== Dashboard APIs ==============================
     @GetMapping("/dashboard")
     public Map<String, Long> getDashboardStats() {
         return adminService.getDashboardStats();
     }
 
-    // ================= USER MANAGEMENT =================
-
-    // Get all users
+    // ==================== User Management APIs ==============================
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return adminService.getAllUsers();
     }
-
-    // ================= POLICE MANAGEMENT =================
-
-    // Get all police
     
-    @GetMapping("/police")
+    
+    
+    // ==================== Police Management APIs ==============================
+    @GetMapping("/police/total")
     public List<Police> getAllPolice() {
         return adminService.getAllPolice();
     }
 
-    // Get pending police approvals
     
-    @GetMapping("/police/pending")
-    public List<Police> getPendingPolice() {
-        return adminService.getPendingPoliceApprovals();
-    }
 
-    // Approve police
-    
-    @PutMapping("/police/{policeId}/approve")
-    public Police approvePolice(@PathVariable Long policeId) {
+    @PutMapping("/police/approve/{policeId}")
+    public Police approvePolice(@PathVariable @NonNull Long policeId) {
         return adminService.approvePolice(policeId);
     }
 
-    // Reject police
-    @PutMapping("/police/{policeId}/reject")
-    public Police rejectPolice(@PathVariable Long policeId) {
+    @PutMapping("/police/reject/{policeId}")
+    public Police rejectPolice(@PathVariable @NonNull Long policeId) {
         return adminService.rejectPolice(policeId);
     }
 
-    // ================= CRIME MANAGEMENT =================
-
-    // Get all crimes
-    
+    // ==================== Crime Management APIs ==============================
     @GetMapping("/crimes")
     public List<Crime> getAllCrimes() {
         return adminService.getAllCrimes();
     }
 
-    // Get crimes by status (PENDING / SUBMITTED / CLOSED)
-    
-    @GetMapping("/crimes/status/{status}")
-    public List<Crime> getCrimesByStatus(@PathVariable String status) {
-        return adminService.getCrimesByStatus(status);
-    }
 
-    // ================= MISSING PERSON MANAGEMENT =================
-
-    // Get all missing persons
-    
+    // ==================== Missing Person Management APIs ==============================
     @GetMapping("/missing-persons")
     public List<MissingPerson> getAllMissingPersons() {
         return adminService.getAllMissingPersons();

@@ -18,46 +18,36 @@ public class Police {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long policeId;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String phone;
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String badgeNumber;
 
-    @Column(nullable = false)
     private String stationName;
-
     private String stationAddress;
     private String city;
     private String state;
     private String pincode;
 
-    @Column(nullable = false)
-    private String rank; // CONSTABLE, SI, DSP, etc.
+    @Column(name = "police_rank")
+    private String rank;
 
-    // 🔐 ADMIN APPROVAL STATUS
-    @Column(nullable = false)
-    private String approvalStatus; // PENDING, APPROVED, REJECTED
+    private String approvalStatus;
 
-    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
-
-        // default status when police registers
         this.approvalStatus = "PENDING";
     }
 }

@@ -1,0 +1,104 @@
+/* ================= MAIN FOOTER ================= */
+.modern-footer {
+  background-color: #0b2545;
+  color: #e5e7eb;
+  padding: 40px 16px 20px;
+  font-family: "Inter", sans-serif;
+  border-top: 4px solid #cd3314;
+  border-radius: 5px;
+}
+
+
+/* ================= GRID LAYOUT ================= */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= BRAND / ABOUT ================= */
+.footer-brand h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d1d5db;
+}
+
+/* ================= COLUMNS ================= */
+.footer-column h4 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+/* ================= LINKS ================= */
+.footer-column ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ================= INFO TEXT ================= */
+.footer-note {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+/* ================= DIVIDER ================= */
+.footer-divider {
+  margin: 32px auto 16px;
+  max-width: 1200px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ================= BOTTOM BAR ================= */
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-brand h2 {
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}

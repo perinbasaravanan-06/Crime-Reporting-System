@@ -1,5 +1,7 @@
+// ==================== Package Declaration ==============================
 package com.crime.reporting.controller;
 
+// ==================== Import Statements ==============================
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +13,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.crime.reporting.model.User;
 import com.crime.reporting.service.UserService;
 
+// ==================== Controller Class Declaration ==============================
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
+    // ==================== Dependency Injection ==============================
     @Autowired
     private UserService userService;
 
-    // ================= READ =================
-
-    // Get all users (Admin use mostly)
+    // ==================== User Retrieval APIs ==============================
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // Get user by ID
+    @SuppressWarnings("null")
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);

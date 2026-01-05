@@ -22,7 +22,10 @@ import lombok.Data;
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long crimeId;
-	
+	    
+	    @Column(nullable = false, unique = true)
+	    private String caseId;
+	    
 	    @Column(nullable = false)
 	    private String crimeType;   // Theft, Murder, Assault, etc.
 	
