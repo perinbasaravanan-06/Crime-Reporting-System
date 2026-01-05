@@ -24,7 +24,6 @@ const RegisterUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await registerUserApi(formData);
       toastSuccess("Registration successful. Please login.");
@@ -35,64 +34,30 @@ const RegisterUser = () => {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-card">
-        {/* LEFT IMAGE */}
-        <div
-          className="register-image"
-          style={{
-            backgroundImage: "url(/src/assets/images/citizen1.jpg)",
-          }}
-        ></div>
+    <div className="register-wrapper">
+      <div className="register-glass">
+        {/* LEFT DARK PANEL */}
+        <div className="register-left">
+          <h2>Citizen Registration</h2>
+          <p>
+            Create an official account to report crimes, submit evidence, and
+            track case status securely.
+          </p>
+        </div>
 
         {/* RIGHT FORM */}
         <div className="register-form">
-          <h2>Create an Account</h2>
+          <h3>Create an Account</h3>
 
           <form onSubmit={handleSubmit}>
-            <input
-              name="name"
-              placeholder="Full Name"
-              onChange={handleChange}
-              required
-            />
-            <input
-              name="phone"
-              placeholder="Phone Number"
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              name="address"
-              placeholder="Address"
-              onChange={handleChange}
-            />
-
+            <input name="name" placeholder="Full Name" onChange={handleChange} required />
+            <input name="phone" placeholder="Phone Number" onChange={handleChange} required />
+            <input name="email" type="email" placeholder="Email Address" onChange={handleChange} required />
+            <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
+            <input name="address" placeholder="Address" onChange={handleChange} />
             <input name="city" placeholder="City" onChange={handleChange} />
             <input name="state" placeholder="State" onChange={handleChange} />
-
-            <input
-              name="pincode"
-              placeholder="Pincode"
-              onChange={handleChange}
-            />
+            <input name="pincode" placeholder="Pincode" onChange={handleChange} />
 
             <button type="submit">Create Account</button>
           </form>

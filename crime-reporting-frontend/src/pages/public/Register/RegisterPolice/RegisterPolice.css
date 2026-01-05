@@ -1,85 +1,66 @@
-.register-page {
-  height: 100vh;
-  width: 100%;
-  background: var(--bg-primary);
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* PAGE */
+.register-wrapper {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Inter", sans-serif;
-
-  /* 🔒 STOP SCROLL ONLY HERE */
-  overflow: hidden;
+  background: #eef1f8;
+  padding: 16px; /* prevents edge overflow */
 }
 
-
-.register-card {
+/* GLASS CARD */
+.register-glass {
+  width: 980px;
+  max-width: 100%;
+  min-height: 480px;          /* 🔽 reduced height */
   display: flex;
-  width: 1000px;
-  max-width: 95%;
-  height: 85vh;
-  /* stays inside viewport */
-  background: linear-gradient(90deg, #0b2545, #133a63);
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-  /* prevents inner overflow */
-  border: 4px solid red;
-  color: #ffffff;
+  background: white;
+  border-radius: 18px;        /* 🔽 reduced radius */
+  overflow: hidden;           /* 🔒 kill horizontal scroll */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* LEFT IMAGE PANEL */
-.register-image {
-  width: 45%;
-
-  background-position: center;
-  position: relative;
-  /* needed for text positioning */
+/* LEFT PANEL */
+.register-left {
+  flex: 1;
+  background: linear-gradient(135deg, #0b2545, #123c6b);
+  color: white;
+  padding: 48px;              /* 🔽 reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-right-radius: 90px;   /* 🔽 reduced curve */
+  border-bottom-right-radius: 90px;
 }
 
-
-
-
-
-/* IMAGE TEXT */
-.register-image-content {
-  position: absolute;
-  bottom: 28px;
-  left: 28px;
-  right: 28px;
-  color: #ffffff;
+.register-left h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
-
-.register-image-content h3 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+.register-left p {
+  font-size: 14px;
+  opacity: 0.9;
+  max-width: 320px;
 }
 
-
-.register-image-content p {
-  font-size: 15px;
-  opacity: 0.95;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-/* RIGHT FORM PANEL */
+/* RIGHT FORM */
 .register-form {
-  width: 55%;
-  padding: 32px 36px;
-  /* reduced vertical padding */
-  background-color: var(--bg-secondary);
+  flex: 1;
+  padding: 32px;              /* 🔽 reduced padding */
+  overflow-y: auto;           /* vertical scroll only if needed */
+  overflow-x: hidden;         /* 🔒 kill horizontal scroll */
 }
 
-.register-form h2 {
-  margin-bottom: 14px;
-  /* tighter spacing */
-  color: var(--text-primary);
-  font-size: 26px;
-  font-weight: 700;
+.register-form h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #0b2545;
 }
 
 /* FORM */
@@ -87,25 +68,30 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* tighter spacing */
 }
 
 .register-form input,
 .register-form select {
+  width: 100%;                /* ✅ alignment fix */
   padding: 11px 14px;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
   font-size: 14px;
+  background: white;
+}
+
+.register-form select {
+  appearance: none;           /* ✅ consistent select height */
 }
 
 .register-form input:focus,
 .register-form select:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  border-color: #0b2545;
+  box-shadow: 0 0 0 2px rgba(11, 37, 69, 0.2);
 }
 
-/* TWO COLUMN ROW */
+/* ROWS */
 .row {
   display: flex;
   gap: 12px;
@@ -118,38 +104,27 @@
 /* BUTTON */
 .register-form button {
   margin-top: 10px;
-  padding: 13px;
-  background: #2563eb;
+  padding: 12px;
+  background: linear-gradient(135deg, #0b2545, #123c6b);
   color: white;
   font-weight: 600;
   border: none;
-  border-radius: 6px;
+  border-radius: 28px;
   cursor: pointer;
 }
 
-.register-form .note {
-  background-color: #ec0707;
-  justify-content: center;
-  text-align: center;
-  border-radius: 2px;
-  min-height: 20px;
-  min-width: 30px;
-  padding: 5px;
-  color: white;
-}
-
 .register-form button:hover {
-  background: #1d4ed8;
+  opacity: 0.95;
 }
 
-/* LINKS */
+/* LINK */
 .switch {
   margin-top: 12px;
   font-size: 14px;
 }
 
 .switch a {
-  color: #2563eb;
+  color: #0b2545;
   font-weight: 600;
   text-decoration: none;
 }
@@ -158,25 +133,27 @@
   text-decoration: underline;
 }
 
-.note {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #b45309;
+/* APPROVAL NOTE */
+.approval-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #92400e;
+  background: #fff7ed;
+  padding: 8px 10px;
+  border-left: 4px solid #f97316;
+  border-radius: 4px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .register-card {
+  .register-glass {
     flex-direction: column;
-    height: auto;
+    min-height: auto;
   }
 
-  .register-image {
-    width: 100%;
-    height: 220px;
-  }
-
-  .register-form {
-    width: 100%;
+  .register-left {
+    border-radius: 0;
+    padding: 32px;
+    text-align: center;
   }
 }

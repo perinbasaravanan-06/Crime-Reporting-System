@@ -27,14 +27,13 @@ const RegisterPolice = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await registerPoliceApi(formData);
-
-      toastSuccess("Registration submitted successfully. Await admin approval.");
+      toastSuccess(
+        "Registration submitted successfully. Await admin approval."
+      );
       navigate("/login/police");
     } catch (error) {
-      console.error(error);
       toastError(
         error.response?.data || "Police registration failed. Try again."
       );
@@ -42,24 +41,20 @@ const RegisterPolice = () => {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-card">
-        {/* LEFT IMAGE */}
-        <div
-          className="register-image"
-          style={{
-            backgroundImage: "url(/src/assets/images/police.jpg)",
-          }}
-        >
-          <div className="register-image-content">
-            <h3>Tamil Nadu Police Portal</h3>
-            <p>Official police officer registration system</p>
-          </div>
+    <div className="register-wrapper">
+      <div className="register-glass">
+        {/* LEFT PANEL */}
+        <div className="register-left">
+          <h2>Police Registration</h2>
+          <p>
+            Official registration portal for Tamil Nadu Police officers.
+            Access will be granted only after admin verification.
+          </p>
         </div>
 
         {/* RIGHT FORM */}
         <div className="register-form">
-          <h2>Create an Account</h2>
+          <h3>Create Police Account</h3>
 
           <form onSubmit={handleSubmit}>
             <div className="row">
@@ -84,6 +79,7 @@ const RegisterPolice = () => {
               onChange={handleChange}
               required
             />
+
             <input
               name="password"
               type="password"
@@ -93,7 +89,7 @@ const RegisterPolice = () => {
             />
 
             <select name="rank" onChange={handleChange} required>
-              <option value="">Choose your rank</option>
+              <option value="">Select Rank</option>
               <option value="CONSTABLE">Constable</option>
               <option value="HEAD CONSTABLE">Head Constable</option>
               <option value="SUB INSPECTOR">Sub Inspector</option>
@@ -110,6 +106,7 @@ const RegisterPolice = () => {
               onChange={handleChange}
               required
             />
+
             <input
               name="stationAddress"
               placeholder="Station Address"
@@ -142,7 +139,9 @@ const RegisterPolice = () => {
             Already registered? <Link to="/login/police">Login</Link>
           </p>
 
-          <p className="note">⚠ Login allowed only after admin approval</p>
+          <div className="approval-note">
+            Login allowed only after admin approval
+          </div>
         </div>
       </div>
     </div>

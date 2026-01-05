@@ -1,57 +1,40 @@
 import React, { useState } from "react";
 import "./LoginUser.css";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { normalLoginApi } from "../../../../api/authApi";
 import { useAuth } from "../../../../auth/AuthContext";
 import { toastError, toastSuccess } from "../../../../utils/toast";
 
 const LoginUser = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  try {
-    const res = await normalLoginApi(email, password);
-
-    const role = res.data.user.role;
-    // ✅ FIX: build correct shape for AuthContext
-    login(res.data);
-    toastSuccess("Login successFull");
-    if (role === "ADMIN") {
-      navigate("/admin/dashboard", { replace: true });
-    } else {
+    e.preventDefault();
+    try {
+      const res = await normalLoginApi(email, password);
+      login(res.data);
+      toastSuccess("Login successful");
       navigate("/user/dashboard", { replace: true });
+    } catch {
+      toastError("Login failed");
     }
-  } catch (err) {
-    console.error(err);
-    toastError("Login Failed")
-  }
-};
+  };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        {/* LEFT IMAGE */}
-        <div
-          className="login-image"
-          style={{ backgroundImage: "url(/src/assets/images/citizen1.jpg)" }}
-        >
-          <div className="login-image-content"></div>
-        </div>
-
-        {/* RIGHT FORM */}
-        <div className="login-form">
-          <h2>Citizen Login</h2>
+    <div className="login-wrapper">
+      <div className="login-glass">
+        {/* LEFT */}
+        <div className="login-left">
+          <h2>Hello!</h2>
+          <p>Sign in to your account</p>
 
           <form onSubmit={handleSubmit}>
             <input
               type="email"
-              placeholder="Email Address"
+              placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -65,11 +48,20 @@ const LoginUser = () => {
               required
             />
 
-            <button type="submit">Login</button>
+            <button type="submit">SIGN IN</button>
           </form>
 
-          <p className="switch">
-            New user? <Link to="/register/user">Create an account</Link>
+          <span className="signup-text">
+            Don’t have an account?
+            <Link to="/register/user"> Create</Link>
+          </span>
+        </div>
+
+        {/* RIGHT */}
+        <div className="login-right">
+          <h2>Welcome Back!</h2>
+          <p>
+            Login to continue accessing your dashboard and manage your account.
           </p>
         </div>
       </div>
