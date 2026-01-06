@@ -99,4 +99,6 @@ tbody tr:last-child {
   text-decoration: underline;
 }
 
-
+.download-btn{
+  margin-bottom: 10px;
+}
