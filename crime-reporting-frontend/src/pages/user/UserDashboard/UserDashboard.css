@@ -1,11 +1,14 @@
 .user-dashboard {
+  width: 100%;
   padding: 28px 36px;
   background: var(--bg-primary);
   min-height: calc(100vh - 124px);
   font-family: "Inter", sans-serif;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER
+================================ */
 .dashboard-header h2 {
   color: var(--text-primary);
   margin-bottom: 4px;
@@ -14,15 +17,21 @@
 .dashboard-header p {
   color: var(--text-secondary);
   font-size: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
-/* STATS */
+/* ===============================
+   STATS (FULL WIDTH DESKTOP)
+================================ */
 .dashboard-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  width: 100%;
+  display: flex;
+
+  /* 🔥 FULL WIDTH DESKTOP */
+  grid-template-columns: repeat(3, 1fr);
+
   gap: 20px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .stat-card {
@@ -53,13 +62,13 @@
   border-left-color: #16a34a;
 }
 
-/* ACTIONS */
+/* ===============================
+   QUICK ACTIONS
+================================ */
 .quick-actions {
   display: flex;
   gap: 16px;
-  flex-wrap: flex;
-
-  /* ✅ ONLY CHANGE */
+  flex-wrap: wrap;
   margin-bottom: 36px;
 }
 
@@ -85,4 +94,46 @@
 
 .quick-actions button:hover {
   opacity: 0.9;
+}
+
+/* ===============================
+   📱 RESPONSIVE
+================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .user-dashboard {
+    padding: 20px 16px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .quick-actions {
+    flex-direction: column;
+  }
+
+  .quick-actions button {
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-card span {
+    font-size: 24px;
+  }
 }
