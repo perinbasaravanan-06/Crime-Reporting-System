@@ -9,7 +9,7 @@ const Home = () => {
   const { loginRole } = useRole(); // UI-selected role
   const { user } = useAuth();
 
-  // 🔐 JWT-safe derived values
+  //  JWT-safe derived values
   const authUser = user;
   const role = authUser?.role;
 
@@ -17,7 +17,7 @@ const Home = () => {
     navigate(loginRole === "POLICE" ? "/login/police" : "/login/user");
   };
 
-  // 🔐 Auto-redirect after login
+  //  Auto-redirect after login
   useEffect(() => {
     if (!role) return;
 

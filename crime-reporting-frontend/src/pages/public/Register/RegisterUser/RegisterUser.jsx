@@ -7,6 +7,8 @@ import { toastError, toastSuccess } from "../../../../utils/toast";
 const RegisterUser = () => {
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false); // ✅ NEW
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,12 +26,16 @@ const RegisterUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true); // start loader
     try {
       await registerUserApi(formData);
       toastSuccess("Registration successful. Please login.");
       navigate("/login/user");
     } catch (error) {
       toastError(error.response?.data || "User registration failed");
+      setLoading(false); // stop loader on error
     }
   };
 
@@ -50,16 +56,71 @@ const RegisterUser = () => {
           <h3>Create an Account</h3>
 
           <form onSubmit={handleSubmit}>
-            <input name="name" placeholder="Full Name" onChange={handleChange} required />
-            <input name="phone" placeholder="Phone Number" onChange={handleChange} required />
-            <input name="email" type="email" placeholder="Email Address" onChange={handleChange} required />
-            <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-            <input name="address" placeholder="Address" onChange={handleChange} />
-            <input name="city" placeholder="City" onChange={handleChange} />
-            <input name="state" placeholder="State" onChange={handleChange} />
-            <input name="pincode" placeholder="Pincode" onChange={handleChange} />
+            <input
+              name="name"
+              placeholder="Full Name"
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <input
+              name="phone"
+              placeholder="Phone Number"
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+            <input
+              name="address"
+              placeholder="Address"
+              onChange={handleChange}
+              disabled={loading}
+            />
+            <input
+              name="city"
+              placeholder="City"
+              onChange={handleChange}
+              disabled={loading}
+            />
+            <input
+              name="state"
+              placeholder="State"
+              onChange={handleChange}
+              disabled={loading}
+            />
+            <input
+              name="pincode"
+              placeholder="Pincode"
+              onChange={handleChange}
+              disabled={loading}
+            />
 
-            <button type="submit">Create Account</button>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <span className="btn-loading">
+                  <span className="spinner" />
+                  Creating...
+                </span>
+              ) : (
+                "Create Account"
+              )}
+            </button>
           </form>
 
           <p className="switch">

@@ -8,11 +8,15 @@ import { toastSuccess, toastError } from "../../../../utils/toast";
 const LoginPolice = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // ✅ NEW
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true); // start loader
     try {
       const res = await policeLoginApi(email, password);
       login(res.data);
@@ -20,6 +24,7 @@ const LoginPolice = () => {
       navigate("/police/dashboard", { replace: true });
     } catch {
       toastError("Login failed");
+      setLoading(false); // stop loader on error
     }
   };
 
@@ -38,6 +43,7 @@ const LoginPolice = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              disabled={loading}
             />
 
             <input
@@ -46,9 +52,19 @@ const LoginPolice = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              disabled={loading}
             />
 
-            <button type="submit">SIGN IN</button>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <span className="btn-loading">
+                  <span className="spinner" />
+                  Signing in...
+                </span>
+              ) : (
+                "SIGN IN"
+              )}
+            </button>
           </form>
 
           <span className="signup-text">
