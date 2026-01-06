@@ -140,3 +140,59 @@
     margin-right: 8px;
   }
 }
+/* =====================================================
+   📱 MOBILE RESPONSIVENESS (IMPROVED)
+===================================================== */
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1024px) {
+  .Toastify__toast-container {
+    width: 92%;
+    left: 4%;
+    right: 4%;
+  }
+}
+
+/* ---------- Mobile Phones ---------- */
+@media (max-width: 768px) {
+  .Toastify__toast-container {
+    width: 94%;
+    left: 3%;
+    right: 3%;
+    margin-top: 16px; /* 🔥 tighter for mobile */
+  }
+
+  .Toastify__toast {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .Toastify__toast-icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+  }
+}
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    margin-top: 12px;
+  }
+
+  .Toastify__toast {
+    padding: 10px 12px;
+    font-size: 12.5px;
+    border-radius: 9px;
+  }
+
+  .Toastify__toast-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+  }
+}
