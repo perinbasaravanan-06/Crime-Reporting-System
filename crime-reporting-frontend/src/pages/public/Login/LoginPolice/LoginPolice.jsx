@@ -17,8 +17,12 @@ const LoginPolice = () => {
     if (loading) return;
 
     setLoading(true); // start loader
+    const slowToast = setTimeout(() => {
+          toastWarning("This may take a while, please wait...");
+        }, 7000);
     try {
       const res = await policeLoginApi(email, password);
+      clearTimeout(slowToast);
       login(res.data);
       toastSuccess("Login successful");
       navigate("/police/dashboard", { replace: true });

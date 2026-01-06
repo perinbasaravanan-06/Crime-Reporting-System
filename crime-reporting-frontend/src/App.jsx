@@ -1,4 +1,5 @@
 import React from "react";
+import "./toast.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./auth/AuthContext";
 /* ================= TOAST IMPORTS ================= */
@@ -73,82 +74,81 @@ function App() {
   return (
     <ThemeProvider>
       <Routes>
-      {/* ================= PUBLIC ================= */}
-      <Route element={<PublicLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-      </Route>
+        {/* ================= PUBLIC ================= */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
 
-      {/* ================= AUTH ================= */}
-      <Route path="/login/user" element={<LoginUser />} />
-      <Route path="/login/police" element={<LoginPolice />} />
-      <Route path="/register/user" element={<RegisterUser />} />
-      <Route path="/register/police" element={<RegisterPolice />} />
+        {/* ================= AUTH ================= */}
+        <Route path="/login/user" element={<LoginUser />} />
+        <Route path="/login/police" element={<LoginPolice />} />
+        <Route path="/register/user" element={<RegisterUser />} />
+        <Route path="/register/police" element={<RegisterPolice />} />
 
-      {/* ================= USER ================= */}
-      <Route
-        path="/user"
-        element={
-          <ProtectedRoute role="USER">
-            <UserLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="dashboard" element={<UserDashboard />} />
-        <Route path="report-crime" element={<ReportCrime />} />
-        <Route path="report-missing" element={<ReportMissing />} />
-        <Route path="my-reports" element={<MyReports />} />
-        <Route path="submit-evidence" element={<SubmitEvidence />} />
-      </Route>
+        {/* ================= USER ================= */}
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute role="USER">
+              <UserLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<UserDashboard />} />
+          <Route path="report-crime" element={<ReportCrime />} />
+          <Route path="report-missing" element={<ReportMissing />} />
+          <Route path="my-reports" element={<MyReports />} />
+          <Route path="submit-evidence" element={<SubmitEvidence />} />
+        </Route>
 
-      {/* ================= POLICE ================= */}
-      <Route
-        path="/police"
-        element={
-          <ProtectedRoute role="POLICE">
-            <PoliceLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="dashboard" element={<PoliceDashboard />} />
-        <Route path="crime-cases" element={<PoliceCrimeCases />} />
-        <Route path="missing-cases" element={<PoliceMissingCases />} />
-        <Route path="evidence" element={<PoliceEvidence />} />
-        <Route path="my-reports" element={<PoliceMyReports />} />
-      </Route>
+        {/* ================= POLICE ================= */}
+        <Route
+          path="/police"
+          element={
+            <ProtectedRoute role="POLICE">
+              <PoliceLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<PoliceDashboard />} />
+          <Route path="crime-cases" element={<PoliceCrimeCases />} />
+          <Route path="missing-cases" element={<PoliceMissingCases />} />
+          <Route path="evidence" element={<PoliceEvidence />} />
+          <Route path="my-reports" element={<PoliceMyReports />} />
+        </Route>
 
-      {/* ================= ADMIN ================= */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute role="ADMIN">
-            <AdminLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="users" element={<UserManagement />} />
-        <Route path="police" element={<PoliceOverview />} />
-        <Route path="police/total" element={<PoliceTotal />} />
-        <Route path="police/requests" element={<PoliceRequests />} />
-        <Route path="police/approved" element={<PoliceApproved />} />
-        <Route path="police/rejected" element={<PoliceRejected />} />
-        <Route path="crimes" element={<CrimeCases />} />
-        <Route path="missing-cases" element={<MissingCases />} />
-        <Route path="evidence" element={<Evidence />} />
-      </Route>
-    </Routes>
-    {/* ✅ GLOBAL TOAST */}
-      <ToastContainer style={{ width: "300px", marginTop: "75px"}}
+        {/* ================= ADMIN ================= */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute role="ADMIN">
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<UserManagement />} />
+          <Route path="police" element={<PoliceOverview />} />
+          <Route path="police/total" element={<PoliceTotal />} />
+          <Route path="police/requests" element={<PoliceRequests />} />
+          <Route path="police/approved" element={<PoliceApproved />} />
+          <Route path="police/rejected" element={<PoliceRejected />} />
+          <Route path="crimes" element={<CrimeCases />} />
+          <Route path="missing-cases" element={<MissingCases />} />
+          <Route path="evidence" element={<Evidence />} />
+        </Route>
+      </Routes>
+      {/* ✅ GLOBAL TOAST */}
+      <ToastContainer
         position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
+        autoClose={2500}
         newestOnTop
-        closeOnClick
-        pauseOnHover
-        theme="colored"
+        pauseOnHover={false}
+        draggable
+        closeButton={false}
       />
-      </ThemeProvider>
+    </ThemeProvider>
   );
 }
 

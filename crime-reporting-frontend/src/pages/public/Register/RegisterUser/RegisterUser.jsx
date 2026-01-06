@@ -29,8 +29,12 @@ const RegisterUser = () => {
     if (loading) return;
 
     setLoading(true); // start loader
+    const slowToast = setTimeout(() => {
+          toastWarning("This may take a while, please wait...");
+        }, 7000);
     try {
       await registerUserApi(formData);
+      clearTimeout(slowToast);
       toastSuccess("Registration successful. Please login.");
       navigate("/login/user");
     } catch (error) {

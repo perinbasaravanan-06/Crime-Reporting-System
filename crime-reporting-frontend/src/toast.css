@@ -1,0 +1,85 @@
+/* ===============================
+   CONTAINER
+================================ */
+.Toastify__toast-container {
+  width: 340px;
+  margin-top: 72px;
+}
+
+/* ===============================
+   BASE TOAST CARD
+================================ */
+.Toastify__toast {
+  display: flex;
+  align-items: center;
+
+  background: #ffffff !important;
+  color: #111827 !important;
+
+  border-radius: 10px;
+  padding: 14px 16px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Toast body */
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+/* ===============================
+   LEFT ICON
+================================ */
+.Toastify__toast-icon {
+  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+}
+
+/* ===============================
+   REMOVE CLOSE ICON COMPLETELY
+================================ */
+.Toastify__close-button {
+  display: none !important;
+}
+
+/* ===============================
+   SUCCESS
+================================ */
+.Toastify__toast--success .Toastify__toast-icon {
+  color: #22c55e;
+}
+
+/* ===============================
+   INFO
+================================ */
+.Toastify__toast--info .Toastify__toast-icon {
+  color: #3b82f6;
+}
+
+/* ===============================
+   WARNING
+================================ */
+.Toastify__toast--warning .Toastify__toast-icon {
+  color: #facc15;
+}
+
+/* ===============================
+   ERROR
+================================ */
+.Toastify__toast--error .Toastify__toast-icon {
+  color: #ef4444;
+}
+
+/* ===============================
+   PROGRESS BAR (SUBTLE)
+================================ */
+.Toastify__progress-bar {
+  height: 2px;
+}
