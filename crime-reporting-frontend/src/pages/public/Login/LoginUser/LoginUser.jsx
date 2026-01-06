@@ -3,7 +3,7 @@ import "./LoginUser.css";
 import { Link, useNavigate } from "react-router-dom";
 import { normalLoginApi } from "../../../../api/authApi";
 import { useAuth } from "../../../../auth/AuthContext";
-import { toastError, toastSuccess } from "../../../../utils/toast";
+import { toastError, toastSuccess, toastWarning } from "../../../../utils/toast";
 
 const LoginUser = () => {
   const [email, setEmail] = useState("");
@@ -16,15 +16,19 @@ const LoginUser = () => {
     e.preventDefault();
     if (loading) return;
 
-    setLoading(true); // ✅ start loading
+    setLoading(true); //  start loading
+    const slowToast = setTimeout(() => {
+      toastWarning("This may take a while, please wait...");
+    }, 7000);
     try {
       const res = await normalLoginApi(email, password);
+      clearTimeout(slowToast);
       login(res.data);
       toastSuccess("Login successful");
       navigate("/user/dashboard", { replace: true });
     } catch {
       toastError("Login failed");
-      setLoading(false); // ❌ stop loading on error
+      setLoading(false); // stop loading on error
     }
   };
 
@@ -38,6 +42,8 @@ const LoginUser = () => {
 
           <form onSubmit={handleSubmit}>
             <input
+            id="email"
+    name="email"
               type="email"
               placeholder="E-mail"
               value={email}
@@ -47,6 +53,8 @@ const LoginUser = () => {
             />
 
             <input
+            id="password"
+    name="password"
               type="password"
               placeholder="Password"
               value={password}
@@ -86,4 +94,3 @@ const LoginUser = () => {
 };
 
 export default LoginUser;
-      
