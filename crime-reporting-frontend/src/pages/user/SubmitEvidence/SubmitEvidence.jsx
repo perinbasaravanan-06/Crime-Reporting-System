@@ -13,7 +13,7 @@ import { toastError, toastSuccess } from "../../../utils/toast.js";
 const SubmitEvidence = () => {
   const { missingPersonsListById } = useMissing();
   const { crimesListById } = useCrime();
-  const {fetchMyEvidence} = useEvidence();
+  const { fetchMyEvidence } = useEvidence();
 
   const [formData, setFormData] = useState({
     caseCategory: "",
@@ -45,8 +45,7 @@ const SubmitEvidence = () => {
   const filteredCases = cases.filter(
     (c) =>
       c.name.toLowerCase().includes(search.toLowerCase()) ||
-      c.id.toLowerCase().includes(search.toLowerCase()) ||
-      c.category.toLowerCase().includes(search.toLowerCase())
+      c.id.toLowerCase().includes(search.toLowerCase())
   );
 
   const selectCase = (item) => {
@@ -61,47 +60,40 @@ const SubmitEvidence = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((p) => ({ ...p, [name]: value }));
   };
 
   const handleFileChange = (e) => {
-    setFormData((prev) => ({ ...prev, file: e.target.files[0] }));
+    setFormData((p) => ({ ...p, file: e.target.files[0] }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.file || !formData.backendId) return;
 
-  if (!formData.file || !formData.backendId) {
-    alert("Please select a case and upload a file");
-    return;
-  }
+    try {
+      const uploadRes = await uploadEvidenceFile(formData.file);
 
-  try {
-    // 1️⃣ Upload file
-    const uploadRes = await uploadEvidenceFile(formData.file);
+      const payload = {
+        fileName: uploadRes.fileName,
+        fileType: uploadRes.fileType,
+        fileUrl: uploadRes.fileUrl,
+        description: formData.description,
+      };
 
-    // 2️⃣ Prepare payload
-    const payload = {
-      fileName: uploadRes.fileName,
-      fileType: uploadRes.fileType,
-      fileUrl: uploadRes.fileUrl,
-      description: formData.description,
-    };
+      if (formData.caseCategory === "CRIME") {
+        await submitCrimeEvidence(formData.backendId, payload);
+      } else {
+        await submitMissingEvidence(formData.backendId, payload);
+      }
 
-    // 3️⃣ Save Evidence (JWT decides user)
-    if (formData.caseCategory === "CRIME") {
-      await submitCrimeEvidence(formData.backendId, payload);
-    } else {
-      await submitMissingEvidence(formData.backendId, payload);
+      fetchMyEvidence();
+      toastSuccess("Evidence submitted successfully");
+      resetForm();
+    } catch {
+      toastError("Evidence submission failed");
     }
-    fetchMyEvidence();
-    toastSuccess("Evidence submitted successfully");
-    resetForm();
-  } catch (error) {
-    console.error("Failed to submit Evidence", error);
-    toastError("Evidence submission failed");
-  }
-};
+  };
 
   const resetForm = () => {
     setFormData({
@@ -117,83 +109,88 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="evidence-page">
-      <div className="evidence-form-card">
-        <h2>Submit Evidence</h2>
+      {/* ✅ GLOBAL CONTAINER */}
+      <div className="page-container">
+        {/* LEFT */}
+        <div className="evidence-form-card">
+          <h2>Submit Evidence</h2>
 
-        <form onSubmit={handleSubmit}>
-          <select
-            name="caseCategory"
-            value={formData.caseCategory}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select category</option>
-            <option value="CRIME">Crime</option>
-            <option value="MISSING">Missing Person</option>
-          </select>
-
-          {formData.caseCategory === "CRIME" && (
+          <form onSubmit={handleSubmit}>
             <select
-              name="crimeType"
-              value={formData.crimeType}
+              name="caseCategory"
+              value={formData.caseCategory}
               onChange={handleChange}
               required
             >
-              <option value="">Select crime type</option>
-              <option value="THEFT">Theft</option>
-              <option value="ASSAULT">Assault</option>
-              <option value="MURDER">Murder</option>
-              <option value="CYBER_CRIME">Cyber Crime</option>
+              <option value="">Select category</option>
+              <option value="CRIME">Crime</option>
+              <option value="MISSING">Missing Person</option>
             </select>
-          )}
 
-          <input value={formData.caseId} readOnly />
+            {formData.caseCategory === "CRIME" && (
+              <select
+                name="crimeType"
+                value={formData.crimeType}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select crime type</option>
+                <option value="THEFT">Theft</option>
+                <option value="ASSAULT">Assault</option>
+                <option value="MURDER">Murder</option>
+                <option value="CYBER_CRIME">Cyber Crime</option>
+              </select>
+            )}
 
-          <textarea
-            name="description"
-            placeholder="Description"
-            onChange={handleChange}
-            required
-          />
+            <input value={formData.caseId} readOnly />
+
+            <textarea
+              name="description"
+              placeholder="Description"
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              type="file"
+              accept="image/*,video/*,.pdf"
+              onChange={handleFileChange}
+              required
+            />
+
+            <button type="submit">Submit Evidence</button>
+          </form>
+        </div>
+
+        {/* RIGHT */}
+        <div className="evidence-case-list">
+          <h3>Reported Cases</h3>
 
           <input
-            type="file"
-            accept="image/*,video/*,.pdf"
-            onChange={handleFileChange}
-            required
+            className="search"
+            placeholder="Search by name or case ID"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
 
-          <button type="submit">Submit Evidence</button>
-        </form>
-      </div>
-
-      <div className="evidence-case-list">
-        <h3>Reported Cases</h3>
-        <input
-          className="search"
-          placeholder="Search by name or cases"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-        <div className="case-scroll">
-          {filteredCases.map((item) => (
-            <div
-              key={item.id}
-              className="case-card"
-              onClick={() => selectCase(item)}
-            >
-              <div>
-                <strong>{item.name}</strong>
-                <p>{item.id}</p>
-              </div>
-              <span
-                className={`badge-${item.category.toLowerCase()}`}
+          <div className="case-scroll">
+            {filteredCases.map((item) => (
+              <div
+                key={item.id}
+                className="case-card"
+                onClick={() => selectCase(item)}
               >
-                {item.category}
-              </span>
-            </div>
-          ))}
+                <div>
+                  <strong>{item.name}</strong>
+                  <p>{item.id}</p>
+                </div>
+
+                <span className={`badge-${item.category.toLowerCase()}`}>
+                  {item.category}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

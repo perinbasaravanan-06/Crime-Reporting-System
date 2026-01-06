@@ -1,14 +1,29 @@
+/* ===============================
+   PAGE (FULL WIDTH LIKE NAVBAR)
+================================ */
 .evidence-page {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
-  padding: 24px 36px;
   background: #f8fafc;
   min-height: calc(100vh - 140px);
   font-family: "Inter", sans-serif;
 }
 
-/* LEFT */
+/* ===============================
+   GLOBAL CONTAINER (KEY FIX)
+================================ */
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px clamp(16px, 3vw, 36px);
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+}
+
+/* ===============================
+   LEFT FORM
+================================ */
 .evidence-form-card {
   background: #ffffff;
   padding: 28px;
@@ -18,33 +33,22 @@
 
 .evidence-form-card h2 {
   color: #0b2545;
-}
-
-.info {
-  font-size: 14px;
-  color: #475569;
-  margin-bottom: 18px;
-}
-
-.field-group {
   margin-bottom: 14px;
-  width: 90%;
 }
 
-.field-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 6px;
+.evidence-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.field-group input,
-.field-group select,
-.field-group textarea {
-  width: 100%;
+.evidence-form-card input,
+.evidence-form-card select,
+.evidence-form-card textarea {
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
+  font-size: 14px;
 }
 
 textarea {
@@ -52,7 +56,6 @@ textarea {
 }
 
 button {
-  width: 100%;
   padding: 14px;
   background: #0b2545;
   color: #ffffff;
@@ -66,21 +69,23 @@ button:hover {
   background: #133a63;
 }
 
-/* RIGHT */
+/* ===============================
+   RIGHT LIST
+================================ */
 .evidence-case-list {
   background: #ffffff;
-  padding: 20px;
+  padding: 22px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .evidence-case-list h3 {
-  margin-bottom: 10px;
   color: #0b2545;
+  margin-bottom: 10px;
 }
 
 .search {
-  width: 94%;
+  width: 100%;
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
@@ -111,39 +116,41 @@ button:hover {
   color: #64748b;
 }
 
-.badge {
-  padding: 5px 12px;
-  font-size: 11px;
-  border-radius: 16px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* CRIME */
+/* BADGES */
 .badge-crime {
-            /* softer red */
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 16px;
   color: #b91c1c;
-  border-color: #fecaca;
-
+  border: 1px solid #fecaca;
 }
 
-/* MISSING */
 .badge-missing {
-            /* softer blue */
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 16px;
   color: #1d4ed8;
-
+  border: 1px solid #bfdbfe;
 }
 
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .evidence-page {
+/* ===============================
+   📱 MOBILE (PERFECT CENTER)
+================================ */
+@media (max-width: 768px) {
+  .page-container {
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .evidence-form-card,
+  .evidence-case-list {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 16px 12px;
   }
 }
