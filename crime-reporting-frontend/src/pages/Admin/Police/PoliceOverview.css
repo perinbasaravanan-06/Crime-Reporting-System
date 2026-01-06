@@ -84,3 +84,71 @@
 .police-action button:hover {
   background: #1d4ed8;
 }
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNTOUCHED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .police-overview {
+    padding: 24px 20px;
+  }
+
+  .police-stats {
+    gap: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .police-overview {
+    padding: 20px 16px;
+  }
+
+  .police-overview h2 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* Stack stat cards vertically */
+  .police-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 22px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  /* Action buttons stack */
+  .police-action {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .police-action button {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 24px;
+  }
+
+  .stat-number {
+    font-size: 22px;
+  }
+}
+  

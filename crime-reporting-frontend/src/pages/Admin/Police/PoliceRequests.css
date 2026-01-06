@@ -89,3 +89,72 @@
   color: #64748b;
   border-radius: 8px;
 }
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNTOUCHED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .police-requests {
+    padding: 24px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .police-requests {
+    padding: 20px 16px;
+  }
+
+  .police-requests h2 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  /* Enable horizontal scroll for table */
+  .requests-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .requests-table th,
+  .requests-table td {
+    font-size: 13.5px;
+    padding: 12px;
+  }
+
+  /* Bigger tap area for buttons */
+  .actions {
+    gap: 12px;
+  }
+
+  .actions button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  /* Add breathing space between rows */
+  .requests-table tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .requests-table th,
+  .requests-table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}

@@ -83,3 +83,60 @@
 .Toastify__progress-bar {
   height: 2px;
 }
+
+/* =====================================================
+   📱 MOBILE RESPONSIVENESS (ONLY ADDITIONS)
+===================================================== */
+
+/* ---------- Tablets & below ---------- */
+@media (max-width: 1024px) {
+  .Toastify__toast-container {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+  }
+}
+
+/* ---------- Mobile Devices ---------- */
+@media (max-width: 768px) {
+  .Toastify__toast-container {
+    width: 94%;
+    left: 3%;
+    right: 3%;
+    margin-top: 60px;
+  }
+
+  .Toastify__toast {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-radius: 9px;
+  }
+
+  .Toastify__toast-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+  }
+}
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    margin-top: 52px;
+  }
+
+  .Toastify__toast {
+    padding: 10px 12px;
+    font-size: 12.5px;
+    border-radius: 8px;
+  }
+
+  .Toastify__toast-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}

@@ -49,3 +49,74 @@
   padding: 20px;
   color: #64748b;
 }
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNTOUCHED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .assigned-table-card {
+    padding: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .assigned-table-card {
+    padding: 16px;
+    margin-top: 24px;
+  }
+
+  .assigned-table-card h3 {
+    font-size: 18px;
+  }
+
+  /* Allow horizontal scroll instead of squeezing columns */
+  .table-wrapper {
+    overflow-x: auto;
+    overflow-y: visible; /* avoid double scroll on mobile */
+    max-height: unset;
+  }
+
+  .assigned-table-card table {
+    min-width: 700px; /* prevents congestion */
+  }
+
+  .assigned-table-card th {
+    font-size: 12.5px;
+    padding: 10px;
+  }
+
+  .assigned-table-card td {
+    font-size: 13.5px;
+    padding: 12px 10px;
+  }
+
+  /* Add spacing between rows for touch comfort */
+  .assigned-table-card tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
+
+  /* Image slightly smaller on mobile */
+  .assigned-table-card img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .assigned-table-card table {
+    min-width: 640px;
+  }
+
+  .assigned-table-card th,
+  .assigned-table-card td {
+    padding: 10px 8px;
+  }
+
+  .assigned-table-card h3 {
+    font-size: 16px;
+  }
+}

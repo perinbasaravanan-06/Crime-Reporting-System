@@ -8,7 +8,6 @@
   border-radius: 5px;
 }
 
-
 /* ================= GRID LAYOUT ================= */
 .footer-grid {
   display: grid;
@@ -87,15 +86,62 @@
   color: #cbd5f5;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =====================================================
+   📱 PERFECT MOBILE RESPONSIVE
+===================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .footer-grid {
+    gap: 32px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 900px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+    text-align: left;
   }
 
   .footer-brand h2 {
     font-size: 18px;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+  }
+
+  .footer-column h4 {
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul li {
+    font-size: 14px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .modern-footer {
+    padding: 32px 14px 18px;
+  }
+
+  .footer-brand h2 {
+    font-size: 17px;
+  }
+
+  .footer-brand p {
+    font-size: 13.5px;
+  }
+
+  .footer-column ul li {
+    font-size: 13.5px;
+  }
+
+  .footer-note {
+    font-size: 13px;
   }
 
   .footer-bottom {

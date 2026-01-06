@@ -44,7 +44,7 @@ const CrimeTable = () => {
             {filteredCrimes.length > 0 ? (
               filteredCrimes.map((c) => (
                 <tr key={c.crimeId}>
-                  <td>{c.caseId}</td>
+                  <td data-label="Case ID">{c.caseId}</td>
                   <td>{c.crimeType}</td>
                   <td>
                     {c.location}

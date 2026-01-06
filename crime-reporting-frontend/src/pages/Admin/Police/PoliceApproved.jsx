@@ -14,28 +14,31 @@ const PoliceApproved = () => {
       {approvedPoliceList.length === 0 ? (
         <div className="empty">No Approved Police</div>
       ) : (
-        <table className="approved-table">
-          <thead>
-            <tr>
-              <th>S.no</th>
-              <th>Name</th>
-              <th>Rank</th>
-              <th>Badge</th>
-              <th>Station</th>
-            </tr>
-          </thead>
-          <tbody>
-            {approvedPoliceList.map((p,index) => (
-              <tr key={p.userId}>
-                <td>{index+1}</td>
-                <td>{p.name}</td>
-                <td>{p.rank}</td>
-                <td>{p.badgeNumber}</td>
-                <td>{p.stationName}</td>
+        /* ✅ THIS IS THE IMPORTANT FIX */
+        <div className="table-wrapper">
+          <table className="approved-table">
+            <thead>
+              <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Badge</th>
+                <th>Station</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {approvedPoliceList.map((p, index) => (
+                <tr key={p.userId}>
+                  <td>{index + 1}</td>
+                  <td>{p.name}</td>
+                  <td>{p.rank}</td>
+                  <td>{p.badgeNumber}</td>
+                  <td>{p.stationName}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

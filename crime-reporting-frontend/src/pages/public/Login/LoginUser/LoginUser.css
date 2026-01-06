@@ -161,3 +161,53 @@
     transform: rotate(360deg);
   }
 }
+/* ===============================
+   MOBILE: SAME FLOW AS REGISTER
+   (INFO FIRST, FORM SECOND)
+   DESKTOP UNCHANGED
+================================ */
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+
+  .login-glass {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* INFO BLOCK ON TOP */
+  .login-right {
+    order: 1;
+    border-radius: 0;
+    padding: 36px 24px;
+    text-align: center;
+  }
+
+  /* FORM BELOW */
+  .login-left {
+    order: 2;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .login-left h2 {
+    font-size: 26px;
+  }
+
+  .login-left p {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .login-left input {
+    padding: 14px 16px;
+  }
+
+  .login-left button {
+    padding: 14px;
+    font-size: 14px;
+  }
+}

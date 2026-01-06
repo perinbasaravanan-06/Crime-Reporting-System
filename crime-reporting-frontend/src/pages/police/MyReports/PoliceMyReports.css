@@ -84,3 +84,104 @@
   background: #fee2e2;
   color: #991b1b;
 }
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNCHANGED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .police-myreports {
+    padding: 24px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .police-myreports {
+    padding: 20px 16px;
+  }
+
+  /* Header */
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .page-header h2 {
+    font-size: 20px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  /* Download button */
+  .download-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Table card spacing */
+  .table-card {
+    padding: 16px;
+  }
+
+  /* Table scroll instead of squeeze */
+  .table-card {
+    overflow-x: auto;
+  }
+
+  .table-card table {
+    min-width: 680px;
+  }
+
+  /* Table text */
+  .table-card th {
+    font-size: 12px;
+    padding: 10px;
+    white-space: nowrap;
+  }
+
+  .table-card td {
+    font-size: 13px;
+    padding: 12px 10px;
+    white-space: nowrap;
+  }
+
+  /* Images */
+  .table-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
+
+  /* Status badge */
+  .status {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .page-header h2 {
+    font-size: 18px;
+  }
+
+  .download-btn {
+    font-size: 13px;
+  }
+
+  .table-card {
+    padding: 14px;
+  }
+
+  .table-card th,
+  .table-card td {
+    padding: 10px 8px;
+  }
+}

@@ -5,7 +5,7 @@
   font-family: "Inter", sans-serif;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .page-header h2 {
   color: #0b2545;
   margin-bottom: 4px;
@@ -17,7 +17,7 @@
   margin-bottom: 24px;
 }
 
-/* OVERVIEW */
+/* ================= OVERVIEW ================= */
 .missing-overview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -25,22 +25,106 @@
   margin-bottom: 28px;
 }
 
-/* TABLE CARD */
+/* ================= STAT CARD ================= */
+.stat-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h4 {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.stat-card span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b2545;
+}
+
+.stat-card.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.stat-card.info1 {
+  border-left: 4px solid #2563eb;
+}
+
+.stat-card.success {
+  border-left: 4px solid #16a34a;
+}
+
+/* ================= TABLE CARD ================= */
 .missing-table-card {
   background: #ffffff;
   padding: 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .missing-table-card h3 {
   color: #0b2545;
+  margin-bottom: 12px;
 }
 
-/* STATUS BADGES */
+/* ================= TABLE HEADER ================= */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.table-search {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  width: 280px;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 820px; /* ✅ many columns + image */
+}
+
+thead th {
+  text-align: left;
+  padding: 14px;
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  vertical-align: middle;
+}
+
+/* ================= IMAGE ================= */
+table img {
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ================= STATUS BADGES ================= */
 .status-badge {
-  padding: 4px 10px;
-  border-radius: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
 }
@@ -60,9 +144,79 @@
   color: #166534;
 }
 
-/* NO DATA */
+/* ================= NO DATA ================= */
 .no-data {
   text-align: center;
-  padding: 16px;
+  padding: 18px;
   color: #64748b;
+}
+
+/* =====================================================
+   📱 CLEAN MOBILE EXPERIENCE (NO CONGESTION)
+===================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .admin-missing-cases {
+    padding: 24px 20px;
+  }
+
+  .table-search {
+    width: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .admin-missing-cases {
+    padding: 20px 16px;
+  }
+
+  .page-header h2 {
+    font-size: 20px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .missing-overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-search {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  table {
+    font-size: 13.5px;
+  }
+
+  /* ✅ row breathing space */
+  tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .stat-card span {
+    font-size: 20px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  tbody td {
+    padding: 14px 10px;
+  }
 }

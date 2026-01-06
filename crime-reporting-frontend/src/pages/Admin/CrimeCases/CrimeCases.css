@@ -1,3 +1,6 @@
+/* ===============================
+   BASE (DESKTOP UNCHANGED)
+================================ */
 .admin-crime-cases {
   padding: 28px 36px;
   background: #f8fafc;
@@ -5,7 +8,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* HEADER */
 .page-header h2 {
   color: #0b2545;
   margin-bottom: 4px;
@@ -17,7 +19,6 @@
   margin-bottom: 24px;
 }
 
-/* OVERVIEW */
 .crime-overview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -25,44 +26,146 @@
   margin-bottom: 28px;
 }
 
-/* TABLE CARD */
-.crime-table-card {
+.stat-card {
   background: #ffffff;
-  padding: 22px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-.crime-table-card h3 {
+.stat-card h4 {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.stat-card span {
+  font-size: 22px;
+  font-weight: 700;
   color: #0b2545;
 }
 
-/* STATUS BADGES */
+/* ===============================
+   TABLE
+================================ */
+.crime-table-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.table-search {
+  width: 280px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 14px;
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #334155;
+}
+
+tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
 .status-badge {
-  padding: 4px 10px;
-  border-radius: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
 }
 
-.status-badge.pending {
-  background: #fef3c7;
-  color: #92400e;
+/* =====================================================
+   📱 CLEAN & SPACIOUS MOBILE UI
+===================================================== */
+
+@media (max-width: 768px) {
+  .admin-crime-cases {
+    padding: 18px 14px;
+  }
+
+  .page-header h2 {
+    font-size: 20px;
+  }
+
+  .crime-overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .table-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table-search {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  /* ❌ REMOVE CARD TABLE VIEW */
+  thead {
+    display: table-header-group;
+  }
+
+  tbody tr {
+    display: table-row;
+  }
+
+  tbody td {
+    display: table-cell;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ✅ ADD SPACING BETWEEN ROWS */
+  tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
 }
 
-.status-badge.investigation {
-  background: #dbeafe;
-  color: #1e40af;
-}
+/* ===============================
+   SMALL PHONES
+================================ */
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 20px;
+  }
 
-.status-badge.closed {
-  background: #dcfce7;
-  color: #166534;
-}
+  .stat-card span {
+    font-size: 20px;
+  }
 
-/* NO DATA */
-.no-data {
-  text-align: center;
-  padding: 16px;
-  color: #64748b;
+  table {
+    font-size: 13.5px;
+  }
+
+  tbody td {
+    padding: 14px 10px;
+  }
 }

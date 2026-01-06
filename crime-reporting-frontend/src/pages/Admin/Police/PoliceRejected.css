@@ -59,3 +59,58 @@
   color: #64748b;
   border-radius: 8px;
 }
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNTOUCHED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .police-rejected {
+    padding: 24px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .police-rejected {
+    padding: 20px 16px;
+  }
+
+  .police-rejected h2 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  /* Enable horizontal scroll for table */
+  .rejected-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .rejected-table th,
+  .rejected-table td {
+    font-size: 13.5px;
+    padding: 12px;
+  }
+
+  /* Add breathing space between rows */
+  .rejected-table tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .rejected-table th,
+  .rejected-table td {
+    font-size: 13px;
+    padding: 10px;
+  }
+}

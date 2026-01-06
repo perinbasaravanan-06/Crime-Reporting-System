@@ -1,13 +1,33 @@
+/* ===============================
+   NAVBAR CONTAINER
+================================ */
 .admin-nav {
   display: flex;
-  gap: 24px;
-  padding: 12px 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
   background: #f1f5f9;
   border-bottom: 1px solid #cbd5e1;
   font-family: "Inter", sans-serif;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+}
 
+/* ===============================
+   TITLE
+================================ */
+.admin-title {
+  font-weight: 700;
+  color: #0b2545;
+  font-size: 16px;
+}
+
+/* ===============================
+   LINKS (DESKTOP)
+================================ */
+.admin-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
 
 .admin-link {
@@ -17,6 +37,7 @@
   padding: 8px 14px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .admin-link:hover {
@@ -26,4 +47,74 @@
 .admin-link.active {
   background-color: #2563eb;
   color: white;
+}
+
+/* ===============================
+   BURGER ICON
+================================ */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 24px;
+  height: 3px;
+  background: #0b2545;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate burger to X */
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* =====================================================
+   📱 MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  /* Show burger */
+  .burger {
+    display: flex;
+  }
+
+  /* Hide links initially */
+  .admin-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background: #f8fafc;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 16px;
+    border-bottom: 1px solid #cbd5e1;
+
+    display: none;
+  }
+
+  /* Show menu when open */
+  .admin-links.show {
+    display: flex;
+  }
+
+  .admin-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
 }

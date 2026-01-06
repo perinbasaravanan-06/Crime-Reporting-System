@@ -147,16 +147,86 @@ tbody tr:hover {
   border-color: #2563eb;
 }
 
-/* RESPONSIVE SEARCH */
-@media (max-width: 768px) {
-  .table-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+/* ===============================
+   MOBILE RESPONSIVE ONLY
+   (DESKTOP STYLES UNTOUCHED)
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .admin-user-management {
+    padding: 24px 20px;
   }
 
-  .table-search {
-    width: 100%;
+  .user-overview {
+    gap: 16px;
   }
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .admin-user-management {
+    padding: 20px 16px;
+  }
+
+  .page-header h2 {
+    font-size: 20px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* Stack overview cards */
+  .user-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 22px;
+  }
+
+  .stat-card span {
+    font-size: 22px;
+  }
+
+  /* TABLE: enable horizontal scroll (do NOT break desktop) */
+  .table-wrapper {
+    overflow-x: auto;
+    max-height: unset; /* remove height lock on mobile */
+  }
+
+  table {
+    min-width: 760px; /* prevent column squeeze */
+    font-size: 13.5px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+  }
+
+  /* Add breathing space between rows */
+  tbody tr:not(:last-child) {
+    border-bottom: 10px solid #f8fafc;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  .stat-card span {
+    font-size: 20px;
+  }
+}
+
 

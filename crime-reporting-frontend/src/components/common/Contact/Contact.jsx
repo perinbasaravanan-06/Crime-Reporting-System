@@ -4,7 +4,8 @@ import axios from "axios";
 import { useRole } from "../../../Context/RoleContext";
 
 const Contact = () => {
-  const {BASE_URL} = useRole();
+  const { BASE_URL } = useRole();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,19 +31,29 @@ const Contact = () => {
         <p>Reach out for support, emergency assistance, or general enquiries</p>
       </div>
 
-      {/* INFO CARDS */}
-      <div className="contact-cards">
+      {/* TOP ROW – 3 CARDS */}
+      <div className="contact-cards three-column">
         <div className="contact-card">
           <h4>🚨 Emergency</h4>
-          <p><strong>Police:</strong> 100</p>
-          <p><strong>Emergency:</strong> 112</p>
-          <p><strong>Women Helpline:</strong> 1091</p>
+          <p>
+            <strong>Police:</strong> 100
+          </p>
+          <p>
+            <strong>Emergency:</strong> 112
+          </p>
+          <p>
+            <strong>Women Helpline:</strong> 1091
+          </p>
         </div>
 
         <div className="contact-card">
           <h4>📞 Support</h4>
-          <p><strong>Phone:</strong> +91 98765 43210</p>
-          <p><strong>Email:</strong> support@crimereporting.in</p>
+          <p>
+            <strong>Phone:</strong> +91 98765 43210
+          </p>
+          <p>
+            <strong>Email:</strong> support@crimereporting.in
+          </p>
           <p>Available 24×7</p>
         </div>
 
@@ -55,34 +66,59 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
-      <div className="contact-content">
-        {/* LEFT INFO */}
-        <div className="contact-info">
-          <h3>Why Contact Us?</h3>
-          <ul>
-            <li>✔ Report technical issues</li>
-            <li>✔ Get help with crime submissions</li>
-            <li>✔ Police & admin verification support</li>
-            <li>✔ Evidence upload assistance</li>
-            <li>✔ System misuse or false reporting</li>
-          </ul>
+      {/* SECOND ROW – INFO + FORM */}
+      <div className="contact-form-row">
+        <div className="contact-info-card">
+          <h4>ℹ️ Quick Information</h4>
 
-          <div className="notice-box">
-            <h4>⚠ Important Notice</h4>
-            <p>
-              False reporting or misuse of the system is punishable under
-              applicable laws. Always submit genuine information.
-            </p>
+          <div className="quick-info-list">
+            <div className="quick-info-item">
+              Use this form only for <strong>non-emergency</strong> queries
+            </div>
+
+            <div className="quick-info-item">
+              For emergencies, immediately call <strong>100 / 112</strong>
+            </div>
+
+            <div className="quick-info-item">
+              This portal is monitored by authorized officials
+            </div>
+
+            <div className="quick-info-item">
+              Do not submit duplicate or repeated requests
+            </div>
+
+            <div className="quick-info-item">
+              Evidence files must be uploaded after logging in
+            </div>
+
+            <div className="quick-info-item">
+              Supported formats: images & documents only
+            </div>
+
+            <div className="quick-info-item">
+              Average response time is within <strong>24 hours</strong>
+            </div>
+
+            <div className="quick-info-item">
+              Replies will be sent to your registered email
+            </div>
+
+            <div className="quick-info-item">
+              Incomplete or false information may delay response
+            </div>
+
+            <div className="quick-info-item warning">
+              Misuse of this system is punishable under Indian law
+            </div>
           </div>
         </div>
 
-        {/* RIGHT FORM */}
-        <div className="contact-form-wrapper">
-          <form className="contact-form-card" onSubmit={submit}>
-            <h2>Send a Message</h2>
-            <p>We usually respond within 24 hours</p>
+        <div className="contact-form-card">
+          <h2>✉️ Contact Form</h2>
+          <p>We usually respond within 24 hours</p>
 
+          <form onSubmit={submit}>
             <input
               name="name"
               placeholder="Your Name"
@@ -121,9 +157,31 @@ const Contact = () => {
         </div>
       </div>
 
+      {/* WHY CONTACT */}
+      <div className="why-contact">
+        <h3>Why Contact Us?</h3>
+        <ul>
+          <li>✔ Report technical issues</li>
+          <li>✔ Get help with crime submissions</li>
+          <li>✔ Police & admin verification support</li>
+          <li>✔ Evidence upload assistance</li>
+          <li>✔ System misuse or false reporting</li>
+        </ul>
+
+        <div className="notice-box">
+          <h4>⚠ Important Notice</h4>
+          <p>
+            False reporting or misuse of the system is punishable under
+            applicable laws. Always submit genuine information.
+          </p>
+        </div>
+      </div>
+
       {/* FOOTER */}
       <div className="contact-footer">
-        <p>© 2025 Crime Reporting System • Designed for public safety & trust</p>
+        <p>
+          © 2025 Crime Reporting System • Designed for public safety & trust
+        </p>
       </div>
     </div>
   );

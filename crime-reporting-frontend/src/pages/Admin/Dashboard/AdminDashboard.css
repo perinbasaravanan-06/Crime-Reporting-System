@@ -28,8 +28,8 @@
 
 .stat-card {
   background: var(--bg-secondary);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 22px;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   border-left: 4px solid #0b2545;
 }
@@ -37,7 +37,7 @@
 .stat-card h4 {
   font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .stat-card span {
@@ -57,46 +57,39 @@
 /* ================= CHART GRID ================= */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  /* ✅ side-by-side */
+  grid-template-columns: 1.4fr 1fr;
   gap: 24px;
   margin-bottom: 28px;
 }
 
 /* ================= CHART CARD ================= */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  /* ✅ balanced columns */
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-/* CHART CARD */
 .chart-card {
   background: var(--bg-secondary);
   padding: 18px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* CHART CONTAINERS */
-.chart-container {
-  height: 260px;
-  width: 100%;
+.chart-card h3 {
+  margin-bottom: 12px;
+  color: var(--text-primary);
 }
 
-/* DOUGHNUT NEEDS LESS HEIGHT */
+/* ================= CHART CONTAINER ================= */
+.chart-container {
+  width: 100%;
+  height: 260px;
+}
+
 .chart-container.doughnut {
   height: 220px;
 }
-
 
 /* ================= CURRENT AFFAIRS ================= */
 .current-affairs {
   background: var(--bg-secondary);
   padding: 22px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -112,7 +105,7 @@
 }
 
 .current-affairs li {
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 14px;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
@@ -122,13 +115,65 @@
   border-bottom: none;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =====================================================
+   📱 CLEAN MOBILE EXPERIENCE
+===================================================== */
+
 @media (max-width: 900px) {
+  .admin-dashboard {
+    padding: 22px 18px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .chart-container {
+    height: 240px;
+  }
+
+  .chart-container.doughnut {
+    height: 200px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 18px 14px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 20px;
+  }
+
+  .dashboard-header p {
+    font-size: 13px;
+  }
+
+  .stat-card {
+    padding: 24px;
+  }
+
+  .stat-card span {
+    font-size: 24px;
   }
 
   .chart-container {
     height: 220px;
+  }
+
+  .chart-container.doughnut {
+    height: 190px;
+  }
+
+  .current-affairs li {
+    font-size: 13.5px;
   }
 }
