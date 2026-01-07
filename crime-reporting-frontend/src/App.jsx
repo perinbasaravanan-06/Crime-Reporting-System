@@ -142,7 +142,7 @@ function App() {
       {/* ✅ GLOBAL TOAST */}
       <ToastContainer
         position="top-right"
-        autoClose={2500}
+        autoClose={3000}
         newestOnTop
         pauseOnHover={false}
         draggable

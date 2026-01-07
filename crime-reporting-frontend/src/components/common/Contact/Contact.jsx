@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Contact.css";
 import axios from "axios";
 import { useRole } from "../../../Context/RoleContext";
+import { toastSuccess } from "../../../utils/toast";
 
 const Contact = () => {
   const { BASE_URL } = useRole();
@@ -19,7 +20,7 @@ const Contact = () => {
   const submit = async (e) => {
     e.preventDefault();
     await axios.post(`${BASE_URL}/api/contact`, form);
-    alert("Message sent successfully 🚀");
+    toastSuccess("Message sent successfully");
     setForm({ name: "", email: "", subject: "", message: "" });
   };
 

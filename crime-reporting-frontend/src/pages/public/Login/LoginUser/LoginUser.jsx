@@ -19,7 +19,7 @@ const LoginUser = () => {
     setLoading(true); //  start loading
     const slowToast = setTimeout(() => {
       toastWarning("This may take a while, please wait...");
-    }, 7000);
+    }, 10000);
     try {
       const res = await normalLoginApi(email, password);
       clearTimeout(slowToast);

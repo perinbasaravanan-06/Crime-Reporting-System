@@ -34,7 +34,7 @@ const RegisterPolice = () => {
     setLoading(true); // start loader
     const slowToast = setTimeout(() => {
           toastWarning("This may take a while, please wait...");
-        }, 7000);
+        }, 10000);
     try {
       await registerPoliceApi(formData);
       clearTimeout(slowToast);

@@ -40,7 +40,7 @@ public class SecurityConfig {
                 // preflight
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/uploads/**").permitAll()
-
+                .requestMatchers(HttpMethod.POST,"/api/contact").permitAll()
                 // auth
                 .requestMatchers("/auth/**").permitAll()
 
