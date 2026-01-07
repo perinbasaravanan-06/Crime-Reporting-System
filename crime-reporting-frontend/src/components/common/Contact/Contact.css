@@ -1,30 +1,25 @@
-.contact-page {
-  padding: 32px 40px;
-  background: #f8fafc;
-  min-height: calc(100vh - 120px);
+* {
+  box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
 
-/* ===============================
-   HEADER
-================================ */
-.contact-header {
-  margin-bottom: 28px;
+.contact-page {
+  padding: 32px 40px;
+  background: #f8fafc;
 }
 
+/* HEADER */
 .contact-header h2 {
   color: #0b2545;
-  margin-bottom: 6px;
 }
 
 .contact-header p {
   font-size: 14px;
   color: #475569;
+  margin-bottom: 30px;
 }
 
-/* ===============================
-   TOP 3 CARDS
-================================ */
+/* TOP CARDS */
 .contact-cards.three-column {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -33,55 +28,28 @@
 }
 
 .contact-card {
-  background: #ffffff;
-  border-radius: 10px;
+  background: white;
   padding: 18px;
+  border-radius: 10px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-.contact-card h4 {
-  color: #0b2545;
-  margin-bottom: 10px;
-}
-
-.contact-card p {
-  font-size: 14px;
-  color: #334155;
-  margin-bottom: 4px;
-}
-
-/* ===============================
-   SECOND ROW
-================================ */
+/* SECOND ROW */
 .contact-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  margin-bottom: 40px;
 }
 
-/* ===============================
-   INFO CARD
-================================ */
+/* INFO CARD */
 .contact-info-card {
-  background: #ffffff;
+  background: white;
   padding: 28px;
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.contact-info-card h4 {
-  color: #0b2545;
-  margin-bottom: 12px;
-}
-
-/* ===============================
-   QUICK INFO
-================================ */
+/* QUICK INFO */
 .quick-info-list {
   display: flex;
   flex-direction: column;
@@ -91,40 +59,22 @@
 .quick-info-item {
   background: #f8fafc;
   border-left: 4px solid #0b2545;
-  padding: 10px 12px;
+  padding: 10px;
   border-radius: 6px;
-
   font-size: 14px;
-  color: #334155;
-  line-height: 1.4;
 }
 
 .quick-info-item.warning {
   background: #fff7ed;
   border-left-color: #f59e0b;
-  color: #78350f;
-  font-weight: 500;
 }
 
-/* ===============================
-   FORM CARD
-================================ */
+/* FORM */
 .contact-form-card {
-  background: #ffffff;
+  background: white;
   padding: 28px;
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form-card h2 {
-  color: #0b2545;
-  margin-bottom: 6px;
-}
-
-.contact-form-card p {
-  color: #64748b;
-  margin-bottom: 16px;
-  font-size: 14px;
 }
 
 .contact-form-card input,
@@ -134,13 +84,6 @@
   margin-bottom: 14px;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  font-size: 14px;
-}
-
-.contact-form-card input:focus,
-.contact-form-card textarea:focus {
-  outline: none;
-  border-color: #0b2545;
 }
 
 .contact-form-card button {
@@ -151,56 +94,37 @@
   border: none;
   border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
 }
 
-.contact-form-card button:hover {
-  background: #133a63;
+/* LOADING */
+.contact-form-card button:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
 }
 
-/* ===============================
-   WHY CONTACT
-================================ */
-.why-contact h3 {
-  color: #0b2545;
-  margin-bottom: 12px;
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.why-contact ul {
-  list-style: none;
-  padding: 0;
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
-.why-contact li {
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #334155;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* ===============================
-   NOTICE
-================================ */
-.notice-box {
-  margin-top: 20px;
-  background: #fff7ed;
-  border-left: 4px solid #f59e0b;
-  padding: 14px;
-  border-radius: 6px;
-}
-
-.notice-box h4 {
-  color: #92400e;
-  margin-bottom: 6px;
-}
-
-.notice-box p {
-  font-size: 13px;
-  color: #78350f;
-}
-
-/* ===============================
-   FOOTER
-================================ */
+/* FOOTER */
 .contact-footer {
   margin-top: 40px;
   text-align: center;
@@ -208,72 +132,10 @@
   color: #64748b;
 }
 
-/* =====================================================
-   📱 PERFECT MOBILE RESPONSIVE
-===================================================== */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .contact-page {
-    padding: 28px 24px;
-  }
-}
-
-/* Mobile */
+/* MOBILE */
 @media (max-width: 768px) {
-  .contact-page {
-    padding: 20px 16px;
-  }
-
-  .contact-cards.three-column {
-    grid-template-columns: 1fr;
-  }
-
+  .contact-cards.three-column,
   .contact-form-row {
     grid-template-columns: 1fr;
-  }
-
-  .contact-card,
-  .contact-info-card,
-  .contact-form-card {
-    padding: 20px;
-  }
-
-  .contact-header h2 {
-    font-size: 20px;
-  }
-
-  .contact-form-card h2 {
-    font-size: 18px;
-  }
-
-  .contact-form-card input,
-  .contact-form-card textarea {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  .contact-form-card button {
-    padding: 14px;
-    font-size: 15px;
-  }
-}
-
-/* Small Phones */
-@media (max-width: 480px) {
-  .contact-page {
-    padding: 16px 12px;
-  }
-
-  .contact-header p {
-    font-size: 13px;
-  }
-
-  .quick-info-item {
-    font-size: 13px;
-  }
-
-  .contact-footer {
-    font-size: 12px;
   }
 }
