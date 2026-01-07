@@ -8,12 +8,19 @@ import {
   submitMissingEvidence,
 } from "../../../api/evidenceApi.js";
 import { useEvidence } from "../../../Context/EvidenceContext.jsx";
-import { toastError, toastSuccess } from "../../../utils/toast.js";
+import {
+  toastError,
+  toastSuccess,
+  toastWarning,
+} from "../../../utils/toast.js";
 
 const SubmitEvidence = () => {
   const { missingPersonsListById } = useMissing();
   const { crimesListById } = useCrime();
   const { fetchMyEvidence } = useEvidence();
+
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   const [formData, setFormData] = useState({
     caseCategory: "",
@@ -23,8 +30,6 @@ const SubmitEvidence = () => {
     description: "",
     file: null,
   });
-
-  const [search, setSearch] = useState("");
 
   const cases = [
     ...crimesListById.map((c) => ({
@@ -49,6 +54,7 @@ const SubmitEvidence = () => {
   );
 
   const selectCase = (item) => {
+    if (loading) return;
     setFormData((prev) => ({
       ...prev,
       caseCategory: item.category,
@@ -67,9 +73,27 @@ const SubmitEvidence = () => {
     setFormData((p) => ({ ...p, file: e.target.files[0] }));
   };
 
+  const resetForm = () => {
+    setFormData({
+      caseCategory: "",
+      crimeType: "",
+      caseId: "",
+      backendId: null,
+      description: "",
+      file: null,
+    });
+    setSearch("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.file || !formData.backendId) return;
+    if (!formData.file || !formData.backendId || loading) return;
+
+    setLoading(true);
+
+    const slowToast = setTimeout(() => {
+      toastWarning("This may take a while, please wait...");
+    }, 10000);
 
     try {
       const uploadRes = await uploadEvidenceFile(formData.file);
@@ -87,29 +111,21 @@ const SubmitEvidence = () => {
         await submitMissingEvidence(formData.backendId, payload);
       }
 
+      clearTimeout(slowToast);
       fetchMyEvidence();
       toastSuccess("Evidence submitted successfully");
       resetForm();
-    } catch {
+    } catch (err) {
+      clearTimeout(slowToast);
+      console.error(err);
       toastError("Evidence submission failed");
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const resetForm = () => {
-    setFormData({
-      caseCategory: "",
-      crimeType: "",
-      caseId: "",
-      backendId: null,
-      description: "",
-      file: null,
-    });
-    setSearch("");
   };
 
   return (
     <div className="evidence-page">
-      {/* ✅ GLOBAL CONTAINER */}
       <div className="page-container">
         {/* LEFT */}
         <div className="evidence-form-card">
@@ -121,6 +137,7 @@ const SubmitEvidence = () => {
               value={formData.caseCategory}
               onChange={handleChange}
               required
+              disabled={loading}
             >
               <option value="">Select category</option>
               <option value="CRIME">Crime</option>
@@ -133,6 +150,7 @@ const SubmitEvidence = () => {
                 value={formData.crimeType}
                 onChange={handleChange}
                 required
+                disabled={loading}
               >
                 <option value="">Select crime type</option>
                 <option value="THEFT">Theft</option>
@@ -149,6 +167,7 @@ const SubmitEvidence = () => {
               placeholder="Description"
               onChange={handleChange}
               required
+              disabled={loading}
             />
 
             <input
@@ -156,9 +175,19 @@ const SubmitEvidence = () => {
               accept="image/*,video/*,.pdf"
               onChange={handleFileChange}
               required
+              disabled={loading}
             />
 
-            <button type="submit">Submit Evidence</button>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <span className="btn-loading">
+                  <span className="spinner" />
+                  Submitting...
+                </span>
+              ) : (
+                "Submit Evidence"
+              )}
+            </button>
           </form>
         </div>
 
@@ -171,6 +200,7 @@ const SubmitEvidence = () => {
             placeholder="Search by name or case ID"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            disabled={loading}
           />
 
           <div className="case-scroll">

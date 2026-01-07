@@ -3,14 +3,19 @@ import "./ReportCrime.css";
 import { createCrime } from "../../../api/crimeApi";
 import { useAuth } from "../../../auth/AuthContext.jsx";
 import { useCrime } from "../../../Context/CrimeContext.jsx";
-import { toastError, toastSuccess } from "../../../utils/toast.js";
+import {
+  toastError,
+  toastSuccess,
+  toastWarning,
+} from "../../../utils/toast.js";
 
 const ReportCrime = () => {
   const { user } = useAuth();
-  const{fetchCrimesListById}  = useCrime();
+  const { fetchCrimesListById } = useCrime();
 
-  // 🔐 JWT-safe derived value (recommended pattern)
   const userId = user?.userId;
+
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     crimeType: "",
@@ -44,11 +49,13 @@ const ReportCrime = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!userId || loading) return;
 
-    if (!userId) {
-      alert("User not authenticated");
-      return;
-    }
+    setLoading(true);
+
+    const slowToast = setTimeout(() => {
+      toastWarning("This may take a while, please wait...");
+    }, 10000);
 
     const crimePayload = {
       crimeType: formData.crimeType,
@@ -61,12 +68,17 @@ const ReportCrime = () => {
 
     try {
       await createCrime(crimePayload);
+      clearTimeout(slowToast);
+
       fetchCrimesListById();
       toastSuccess("Crime reported successfully");
       resetForm();
     } catch (error) {
+      clearTimeout(slowToast);
       console.error(error);
       toastError("Failed to report crime");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,6 +96,7 @@ const ReportCrime = () => {
             value={formData.crimeType}
             onChange={handleChange}
             required
+            disabled={loading}
           >
             <option value="">Select Crime Type</option>
             <option value="THEFT">Theft</option>
@@ -101,6 +114,7 @@ const ReportCrime = () => {
               value={formData.incidentDate}
               onChange={handleChange}
               required
+              disabled={loading}
             />
             <input
               type="time"
@@ -108,6 +122,7 @@ const ReportCrime = () => {
               value={formData.incidentTime}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
 
@@ -117,6 +132,7 @@ const ReportCrime = () => {
             value={formData.address}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
           <div className="row">
@@ -125,18 +141,21 @@ const ReportCrime = () => {
               placeholder="City"
               value={formData.city}
               onChange={handleChange}
+              disabled={loading}
             />
             <input
               name="state"
               placeholder="State"
               value={formData.state}
               onChange={handleChange}
+              disabled={loading}
             />
             <input
               name="pincode"
               placeholder="Pincode"
               value={formData.pincode}
               onChange={handleChange}
+              disabled={loading}
             />
           </div>
 
@@ -146,6 +165,7 @@ const ReportCrime = () => {
             value={formData.description}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
           <textarea
@@ -153,9 +173,19 @@ const ReportCrime = () => {
             placeholder="Suspect details (optional)"
             value={formData.suspectDetails}
             onChange={handleChange}
+            disabled={loading}
           />
 
-          <button type="submit">Submit Crime Report</button>
+          <button type="submit" disabled={loading}>
+            {loading ? (
+              <span className="btn-loading">
+                <span className="spinner" />
+                Submitting...
+              </span>
+            ) : (
+              "Submit Crime Report"
+            )}
+          </button>
         </form>
       </div>
     </div>

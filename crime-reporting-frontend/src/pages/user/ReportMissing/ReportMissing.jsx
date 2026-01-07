@@ -5,10 +5,17 @@ import {
   uploadMissingPersonImage,
 } from "../../../api/missingApi.js";
 import { useMissing } from "../../../Context/MissingContext.jsx";
-import { toastError, toastSuccess } from "../../../utils/toast.js";
+import {
+  toastError,
+  toastSuccess,
+  toastWarning,
+} from "../../../utils/toast.js";
 
 const ReportMissing = () => {
-  const{fetchMissingPersonsById} = useMissing();
+  const { fetchMissingPersonsById } = useMissing();
+
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     personName: "",
     age: "",
@@ -45,24 +52,30 @@ const ReportMissing = () => {
     });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e) =>
     setFormData({ ...formData, photo: e.target.files[0] });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
+
+    const slowToast = setTimeout(() => {
+      toastWarning("This may take a while, please wait...");
+    }, 10000);
+
     try {
       // 1️⃣ Upload image
       const imageRes = await uploadMissingPersonImage(formData.photo);
       const photoUrl = imageRes.data;
-      console.log(photoUrl);
+
       const lastSeenAt = `${formData.lastSeenDate}T${formData.lastSeenTime}`;
 
-      // 2️⃣ Prepare JSON payload
+      // 2️⃣ Prepare payload
       const payload = {
         name: formData.personName,
         age: Number(formData.age),
@@ -79,14 +92,19 @@ const ReportMissing = () => {
         photoUrl: photoUrl,
       };
 
-      // 3️⃣ Submit missing person (🔐 JWT FIX HERE)
+      // 3️⃣ Submit
       await createMissingPersons(payload);
+      clearTimeout(slowToast);
+
       fetchMissingPersonsById();
       toastSuccess("Missing person reported successfully");
       resetForm();
     } catch (error) {
+      clearTimeout(slowToast);
       console.error(error);
       toastError("Failed to report missing person");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -105,6 +123,7 @@ const ReportMissing = () => {
             value={formData.personName}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
           <div className="row">
@@ -115,6 +134,7 @@ const ReportMissing = () => {
               value={formData.age}
               onChange={handleChange}
               required
+              disabled={loading}
             />
 
             <select
@@ -122,6 +142,7 @@ const ReportMissing = () => {
               value={formData.gender}
               onChange={handleChange}
               required
+              disabled={loading}
             >
               <option value="">Select Gender</option>
               <option value="MALE">Male</option>
@@ -135,6 +156,7 @@ const ReportMissing = () => {
               placeholder="Height in cm"
               value={formData.height}
               onChange={handleChange}
+              disabled={loading}
             />
 
             <input
@@ -143,18 +165,19 @@ const ReportMissing = () => {
               placeholder="Weight in Kgs"
               value={formData.weight}
               onChange={handleChange}
+              disabled={loading}
             />
           </div>
 
-          {/* PHOTO UPLOAD */}
+          {/* PHOTO */}
           <div className="image-upload">
             <label>Upload Missing Person Photo *</label>
-
             <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
               required
+              disabled={loading}
             />
 
             {formData.photo && (
@@ -174,6 +197,7 @@ const ReportMissing = () => {
               value={formData.lastSeenDate}
               onChange={handleChange}
               required
+              disabled={loading}
             />
             <input
               type="time"
@@ -181,6 +205,7 @@ const ReportMissing = () => {
               value={formData.lastSeenTime}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
 
@@ -190,37 +215,40 @@ const ReportMissing = () => {
             value={formData.lastSeenLocation}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
-          {/* LOCATION */}
           <div className="row">
             <input
               name="city"
               placeholder="City"
               value={formData.city}
               onChange={handleChange}
+              disabled={loading}
             />
             <input
               name="state"
               placeholder="State"
               value={formData.state}
               onChange={handleChange}
+              disabled={loading}
             />
             <input
               name="pincode"
               placeholder="Pincode"
               value={formData.pincode}
               onChange={handleChange}
+              disabled={loading}
             />
           </div>
 
-          {/* DESCRIPTION */}
           <textarea
             name="description"
-            placeholder="How Was the person Missing"
+            placeholder="How was the person missing?"
             value={formData.description}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
           <input
@@ -229,9 +257,19 @@ const ReportMissing = () => {
             value={formData.identificationMarks}
             onChange={handleChange}
             required
+            disabled={loading}
           />
 
-          <button type="submit">Submit Missing Person Report</button>
+          <button type="submit" disabled={loading}>
+            {loading ? (
+              <span className="btn-loading">
+                <span className="spinner" />
+                Submitting...
+              </span>
+            ) : (
+              "Submit Missing Person Report"
+            )}
+          </button>
         </form>
       </div>
     </div>
