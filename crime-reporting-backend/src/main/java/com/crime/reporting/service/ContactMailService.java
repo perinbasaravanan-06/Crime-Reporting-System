@@ -20,7 +20,8 @@ public class ContactMailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    public void sendContactMail(ContactRequest req) throws MessagingException {
+    @SuppressWarnings("null")
+	public void sendContactMail(ContactRequest req) throws MessagingException {
 
         MimeMessage message = mailSender.createMimeMessage();
 
