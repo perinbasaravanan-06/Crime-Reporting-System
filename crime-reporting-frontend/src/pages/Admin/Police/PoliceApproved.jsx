@@ -24,6 +24,7 @@ const PoliceApproved = () => {
                 <th>Rank</th>
                 <th>Badge</th>
                 <th>Station</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@ const PoliceApproved = () => {
                   <td>{p.rank}</td>
                   <td>{p.badgeNumber}</td>
                   <td>{p.stationName}</td>
+                  <td>
+                    <button className="button">Block</button>
+                  </td>
                 </tr>
               ))}
             </tbody>

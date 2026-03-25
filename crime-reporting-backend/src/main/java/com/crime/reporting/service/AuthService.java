@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.crime.reporting.model.Admin;
 import com.crime.reporting.model.Police;
@@ -101,7 +103,7 @@ public class AuthService {
 	        return response;
 	    }
 
-	    throw new RuntimeException("Invalid credentials");
+	    throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
 	}
 
 	// ==================== POLICE LOGIN ====================

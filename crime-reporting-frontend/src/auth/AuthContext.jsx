@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
       setToken(storedToken);
     }
 
-    setLoading(false); // 👈 DONE restoring
+    setLoading(false); //  DONE restoring
   }, []);
 
   return (

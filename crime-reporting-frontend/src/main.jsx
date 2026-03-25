@@ -8,7 +8,7 @@ import { RoleProvider } from "./Context/RoleContext.jsx";
 import { MissingPersonsProvider } from "./Context/MissingContext.jsx";
 import { CrimeProvider } from "./Context/CrimeContext.jsx";
 import { EvidenceProvider } from "./Context/EvidenceContext.jsx";
-import { AdminProvider } from "./Context/AdminContext.jsx";
+// import { AdminProvider } from "./Context/AdminContext.jsx";
 import { PoliceProvider } from "./Context/PoliceContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

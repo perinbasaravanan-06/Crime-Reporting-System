@@ -15,7 +15,7 @@ import com.crime.reporting.service.CloudinaryService;
 
 @RestController
 @RequestMapping("/api/upload")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173")  
 public class FileUploadController {
 
     private final CloudinaryService cloudinaryService;

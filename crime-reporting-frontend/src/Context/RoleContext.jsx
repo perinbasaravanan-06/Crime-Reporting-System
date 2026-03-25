@@ -6,7 +6,7 @@ const RoleContext = createContext();
 export const RoleProvider = ({ children }) => {
   const { user } = useAuth();
   const [loginRole, setLoginRole] = useState("USER");
-  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL1;
   // Load saved role on app start
   useEffect(() => {
     const savedRole = localStorage.getItem("loginRole");
